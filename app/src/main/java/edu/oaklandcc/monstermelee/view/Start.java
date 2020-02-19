@@ -1,8 +1,10 @@
-package edu.oaklandcc.monstermelee;
+package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import edu.oaklandcc.monstermelee.R;
 
 public class Start extends AppCompatActivity {
 
