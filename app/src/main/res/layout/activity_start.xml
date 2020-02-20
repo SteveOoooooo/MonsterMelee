@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".view.Start">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="93dp"
+        android:layout_height="87dp"
+        android:foreground="@drawable/play"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="291dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
