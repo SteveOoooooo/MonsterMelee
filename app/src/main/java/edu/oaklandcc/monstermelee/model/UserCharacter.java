@@ -25,7 +25,7 @@ public class UserCharacter extends BaseCharacter {
     private int availableStatPoints;
 
     public UserCharacter(String name, int maxHealthPoints, int currentHealthPoints, int attackPoints,
-                         int criticalHitPoints, int charImage, int intelligencePoints){
+                         int criticalHitPoints, Drawable charImage, int intelligencePoints){
         super(name, maxHealthPoints, currentHealthPoints, attackPoints, criticalHitPoints,charImage);
         this.intelligencePoints = intelligencePoints;
         this.experiencePoints = 0;

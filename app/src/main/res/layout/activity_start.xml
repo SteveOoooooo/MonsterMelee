@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_sky"
-    tools:context=".view.Start">
+    tools:context=".view.StartActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/button_Start"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"

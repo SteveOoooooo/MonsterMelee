@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MonsterMelee</string>
+    <string name="SelectCharacter">Select a warrior for battle!</string>
 </resources>
