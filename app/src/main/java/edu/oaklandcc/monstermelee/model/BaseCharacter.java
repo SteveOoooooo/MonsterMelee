@@ -12,10 +12,10 @@ public abstract class BaseCharacter {
     protected int attackPoints;
     protected int criticalHitPoints;
     private boolean dead;
-    protected Drawable charImage;
+    protected int charImage;
 
     public BaseCharacter(String name, int maxHealthPoints, int currentHealthPoints, int attackPoints,
-                         int criticalHitPoints, Drawable charImage){
+                         int criticalHitPoints, int charImage){
         this.name = name;
         this.maxHealthPoints = maxHealthPoints;
         this.currentHealthPoints = currentHealthPoints;
@@ -61,7 +61,7 @@ public abstract class BaseCharacter {
         return dead;
     }
 
-    public Drawable getCharImage() {
+    public int getCharImage() {
         return charImage;
     }
 

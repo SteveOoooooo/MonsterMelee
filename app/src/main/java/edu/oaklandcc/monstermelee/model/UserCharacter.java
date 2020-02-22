@@ -22,15 +22,15 @@ public class UserCharacter extends BaseCharacter {
     private int intelligencePoints;
     private int experiencePoints;
     private int level;
-    private int avaliableStatPoints;
+    private int availableStatPoints;
 
     public UserCharacter(String name, int maxHealthPoints, int currentHealthPoints, int attackPoints,
-                         int criticalHitPoints, Drawable charImage, int intelligencePoints){
+                         int criticalHitPoints, int charImage, int intelligencePoints){
         super(name, maxHealthPoints, currentHealthPoints, attackPoints, criticalHitPoints,charImage);
         this.intelligencePoints = intelligencePoints;
         this.experiencePoints = 0;
         this.level = 1;
-        this.avaliableStatPoints = STARTING_STAT_POINTS;
+        this.availableStatPoints = STARTING_STAT_POINTS;
     }
 
     public void awardXP (int experiencePoints) throws Exception{
@@ -59,7 +59,7 @@ public class UserCharacter extends BaseCharacter {
             if (this.maxHealthPoints > HEALTH_POINTS_LIMIT)
                 this.maxHealthPoints = HEALTH_POINTS_LIMIT;
         }
-        avaliableStatPoints--;
+        availableStatPoints--;
     }
 
     public void upgradeAttack() throws Exception{
@@ -71,7 +71,7 @@ public class UserCharacter extends BaseCharacter {
             if(this.attackPoints > ATTACK_POINTS_LIMIT)
                 this.attackPoints = ATTACK_POINTS_LIMIT;
         }
-        avaliableStatPoints--;
+        availableStatPoints--;
     }
 
     public void upgradeCrit() throws Exception{
@@ -83,7 +83,7 @@ public class UserCharacter extends BaseCharacter {
             if(this.criticalHitPoints > CRITICAL_ATTACK_POINTS_LIMIT)
                 this.criticalHitPoints = CRITICAL_ATTACK_POINTS_LIMIT;
         }
-        avaliableStatPoints--;
+        availableStatPoints--;
     }
 
     public void upgradeIntelligence() throws Exception{
@@ -95,22 +95,22 @@ public class UserCharacter extends BaseCharacter {
             if(this.intelligencePoints > INTELLIGENCE_POINTS_LIMIT)
                 this.intelligencePoints = INTELLIGENCE_POINTS_LIMIT;
         }
-        avaliableStatPoints--;
+        availableStatPoints--;
     }
 
     private void levelCheck(){
         int startLevel = this.level;
         this.level = experiencePoints / XP_PER_LEVEL;
 
-        avaliableStatPoints += (this.level - startLevel) * STAT_POINTS_PER_LEVEL;
+        availableStatPoints += (this.level - startLevel) * STAT_POINTS_PER_LEVEL;
     }
 
     public int getIntelligencePoints() {
         return intelligencePoints;
     }
 
-    public int getAvaliableStatPoints() {
-        return avaliableStatPoints;
+    public int getAvailableStatPoints() {
+        return availableStatPoints;
     }
 }
 
