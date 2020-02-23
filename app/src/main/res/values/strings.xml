@@ -5,4 +5,7 @@
     <string name="Crit">Crit</string>
     <string name="Intelligence">Intelligence</string>
     <string name="Attack">Attack</string>
+    <string name="UpgradeYourWarrior">Upgrade your warrior</string>
+    <string name="Plus">+</string>
+    <string name="fight">Fight!</string>
 </resources>
