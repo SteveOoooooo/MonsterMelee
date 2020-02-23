@@ -38,6 +38,7 @@ public class SelectStatsActivity extends AppCompatActivity {
     UserCharacter userCharacter;
 
     Button backButton;
+    Button fightButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         updateCrit(false);
 
         backButton = findViewById(R.id.button_BackToChacacterSeelct);
+        fightButton = findViewById(R.id.button_goToEnemyIntro);
 
         updateStatPoints();
 
@@ -119,6 +121,13 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 goBackToCharacterSelect();
+            }
+        });
+
+        fightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToEnemyIntro();
             }
         });
 
@@ -172,5 +181,11 @@ public class SelectStatsActivity extends AppCompatActivity {
     private void goBackToCharacterSelect(){
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
+    }
+
+    private void goToEnemyIntro(){
+        Intent intent = new Intent(this, EnemyIntroductionActivity.class);
+        intent.putExtra("UserCharacter", userCharacter);
+        startActivity(intent);
     }
 }

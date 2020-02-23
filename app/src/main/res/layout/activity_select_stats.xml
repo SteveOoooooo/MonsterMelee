@@ -243,7 +243,7 @@
         app:layout_constraintTop_toTopOf="@+id/progressBar_pointsAvaliable" />
 
     <Button
-        android:id="@+id/button_StartFight"
+        android:id="@+id/button_goToEnemyIntro"
         style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -262,7 +262,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Back"
-        app:layout_constraintBottom_toBottomOf="@+id/button_StartFight"
+        app:layout_constraintBottom_toBottomOf="@+id/button_goToEnemyIntro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_StartFight" />
+        app:layout_constraintTop_toTopOf="@+id/button_goToEnemyIntro" />
 </androidx.constraintlayout.widget.ConstraintLayout>

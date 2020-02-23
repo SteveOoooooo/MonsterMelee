@@ -9,4 +9,5 @@
     <string name="Plus">+</string>
     <string name="fight">Fight!</string>
     <string name="Back">Back</string>
+    <string name="EnemyIntro">You are now battling...</string>
 </resources>

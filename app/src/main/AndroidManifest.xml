@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.SelectStatsActivity"></activity>
+        <activity android:name=".view.EnemyIntroductionActivity"></activity>
+        <activity android:name=".view.SelectStatsActivity" />
         <activity android:name=".view.SelectCharacterActivity" />
         <activity android:name=".view.StartActivity">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
