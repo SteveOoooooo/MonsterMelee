@@ -9,12 +9,11 @@
 
     <ImageButton
         android:id="@+id/button_Start"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/start"
         android:scaleX="1"
-        android:scaleY="1"
+        android:scaleY="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"

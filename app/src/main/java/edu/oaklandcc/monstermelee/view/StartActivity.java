@@ -8,12 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import edu.oaklandcc.monstermelee.R;
-import edu.oaklandcc.monstermelee.model.CharacterOptions;
-import edu.oaklandcc.monstermelee.model.UserCharacter;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -42,20 +39,7 @@ public class StartActivity extends AppCompatActivity {
 
     private void startGame(){
 
-        CharacterOptions characterOptions = new CharacterOptions();
-
-        characterOptions.addCharacter(new UserCharacter("Black", 500,
-                500, 100, 50,
-                getResources().getDrawable(R.drawable.blackleft, getTheme()), 100));
-        characterOptions.addCharacter(new UserCharacter("Blue", 500,
-                500, 100, 50,
-                getResources().getDrawable(R.drawable.blueleft, getTheme()), 100));
-        characterOptions.addCharacter(new UserCharacter("Green", 500,
-                500, 100, 50,
-                getResources().getDrawable(R.drawable.greenleft, getTheme()), 100));
-
-        Intent intent = new Intent(this, SelectCharacterActivity.class);
-        //intent.putExtra("characterOptions",characterOptions);
-        startActivity(intent);
+        Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
+        startActivity(selectCharacterIntent);
     }
 }

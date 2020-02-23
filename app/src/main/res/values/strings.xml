@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MonsterMelee</string>
     <string name="SelectCharacter">Select a warrior for battle!</string>
+    <string name="Health">Health</string>
+    <string name="Crit">Crit</string>
+    <string name="Intelligence">Intelligence</string>
+    <string name="Attack">Attack</string>
 </resources>
