@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +41,8 @@ public class SelectCharacterActivity extends AppCompatActivity {
     ProgressBar attackBar2;
     ProgressBar critBar2;
     ProgressBar intelligenceBar2;
+
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +109,8 @@ public class SelectCharacterActivity extends AppCompatActivity {
         intelligenceBar2 = findViewById(R.id.progressBar_Intelligence2);
         intelligenceBar2.setProgress(100*characterList.get(2).getIntelligencePoints()/UserCharacter.INTELLIGENCE_POINTS_LIMIT);
 
+        backButton = findViewById(R.id.button_backToStart);
+
         button0.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -126,6 +131,18 @@ public class SelectCharacterActivity extends AppCompatActivity {
                 characterSelected(characterList.get(2));
             }
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goBackToStart();
+            }
+        });
+    }
+
+    private void goBackToStart() {
+        Intent intent = new Intent(this, StartActivity.class);
+        startActivity(intent);
     }
 
     private void characterSelected(UserCharacter selectedCharacter){

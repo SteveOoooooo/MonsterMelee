@@ -37,7 +37,7 @@
         android:id="@+id/textView_Char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/font"
         android:text="TextView"
         android:textAlignment="center"
@@ -168,7 +168,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:srcCompat="@tools:sample/avatars" />
@@ -220,14 +220,14 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:scaleY="1.5"
-        app:layout_constraintBottom_toTopOf="@+id/imageView_Character"
         app:layout_constraintEnd_toStartOf="@+id/textView_statPointsAvailable"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier4" />
 
     <TextView
         android:id="@+id/textView_statPointsAvailable"
@@ -247,10 +247,22 @@
         style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/fight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_BackToChacacterSeelct"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/monster_melee"
+        android:text="@string/Back"
+        app:layout_constraintBottom_toBottomOf="@+id/button_StartFight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_StartFight" />
 </androidx.constraintlayout.widget.ConstraintLayout>

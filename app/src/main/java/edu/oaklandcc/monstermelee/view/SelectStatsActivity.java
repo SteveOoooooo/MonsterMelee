@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,7 +37,7 @@ public class SelectStatsActivity extends AppCompatActivity {
 
     UserCharacter userCharacter;
 
-
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ public class SelectStatsActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         userCharacter = intent.getParcelableExtra("SelectedCharacter");
         startingStatPoints = userCharacter.getAvailableStatPoints();
 
@@ -85,7 +83,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         critProgressBar = findViewById(R.id.progressBar_Crit);
         updateCrit(false);
 
-
+        backButton = findViewById(R.id.button_BackToChacacterSeelct);
 
         updateStatPoints();
 
@@ -117,6 +115,13 @@ public class SelectStatsActivity extends AppCompatActivity {
             }
         });
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goBackToCharacterSelect();
+            }
+        });
+
     }
 
     private void updateStatPoints() {
@@ -125,43 +130,47 @@ public class SelectStatsActivity extends AppCompatActivity {
         statPointsAvailableTextView.setText(availableStatPoints + " points remaining");
     }
 
-    private void updateHealth (boolean upgrade){
+    private void updateHealth(boolean upgrade) {
         if (upgrade) userCharacter.upgradeMaxHealth();
-        healthProgressBar.setProgress(100 * userCharacter.getMaxHealthPoints()/userCharacter.HEALTH_POINTS_LIMIT);
+        healthProgressBar.setProgress(100 * userCharacter.getMaxHealthPoints() / userCharacter.HEALTH_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
-    private void updateAttack (boolean upgrade){
-        if (upgrade) userCharacter.getAttackPoints();
-        attackProgressBar.setProgress(100 * userCharacter.getAttackPoints()/userCharacter.ATTACK_POINTS_LIMIT);
+    private void updateAttack(boolean upgrade) {
+        if (upgrade) userCharacter.upgradeAttack();
+        attackProgressBar.setProgress(100 * userCharacter.getAttackPoints() / userCharacter.ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
-    private void updateCrit (boolean upgrade){
+    private void updateCrit(boolean upgrade) {
         if (upgrade) userCharacter.upgradeCrit();
-        critProgressBar.setProgress(100 * userCharacter.getCriticalHitPoints()/userCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
+        critProgressBar.setProgress(100 * userCharacter.getCriticalHitPoints() / userCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
-    private void updateIntelligence (boolean upgrade){
+    private void updateIntelligence(boolean upgrade) {
         if (upgrade) userCharacter.upgradeIntelligence();
-        intelligenceProgressBar.setProgress(100 * userCharacter.getIntelligencePoints()/userCharacter.INTELLIGENCE_POINTS_LIMIT);
+        intelligenceProgressBar.setProgress(100 * userCharacter.getIntelligencePoints() / userCharacter.INTELLIGENCE_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
-
-    private void updateButtonEnabled(){
-        if(userCharacter.getMaxHealthPoints() >= UserCharacter.HEALTH_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
+    private void updateButtonEnabled() {
+        if (userCharacter.getMaxHealthPoints() >= UserCharacter.HEALTH_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             healthButtonAdd.setEnabled(false);
-        if(userCharacter.getAttackPoints() >= UserCharacter.ATTACK_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
+        if (userCharacter.getAttackPoints() >= UserCharacter.ATTACK_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             attackButtonAdd.setEnabled(false);
-        if(userCharacter.getCriticalHitPoints() >= UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
+        if (userCharacter.getCriticalHitPoints() >= UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             critButtonAdd.setEnabled(false);
-        if(userCharacter.getIntelligencePoints() >= UserCharacter.INTELLIGENCE_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
+        if (userCharacter.getIntelligencePoints() >= UserCharacter.INTELLIGENCE_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             intelligenceButtonAdd.setEnabled(false);
+    }
+
+    private void goBackToCharacterSelect(){
+        Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
+        startActivity(selectCharacterIntent);
     }
 }
