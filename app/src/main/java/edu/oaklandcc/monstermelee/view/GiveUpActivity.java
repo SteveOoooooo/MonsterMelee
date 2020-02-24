@@ -29,7 +29,6 @@ public class GiveUpActivity extends AppCompatActivity {
         yesButton = findViewById(R.id.button_yes);
         noButton = findViewById(R.id.button_no);
 
-
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

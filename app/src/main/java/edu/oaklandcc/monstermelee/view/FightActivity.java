@@ -50,7 +50,7 @@ public class FightActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        currentMatch = intent.getParcelableExtra("NextMatch");
+        currentMatch = intent.getParcelableExtra("Match");
         currentMatch.getUserCharacter().resetHealth();
 
         playerImageView.setBackground(getResources().getDrawable(

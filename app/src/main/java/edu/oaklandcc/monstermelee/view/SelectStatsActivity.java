@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import edu.oaklandcc.monstermelee.R;
+import edu.oaklandcc.monstermelee.model.Match;
 import edu.oaklandcc.monstermelee.model.UserCharacter;
 
 public class SelectStatsActivity extends AppCompatActivity {
@@ -36,6 +37,7 @@ public class SelectStatsActivity extends AppCompatActivity {
     TextView statPointsAvailableTextView;
     int startingStatPoints;
 
+    Match match;
     UserCharacter userCharacter;
 
     Button backButton;
@@ -56,7 +58,9 @@ public class SelectStatsActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         final Intent intent = getIntent();
-        userCharacter = intent.getParcelableExtra("SelectedCharacter");
+        match = intent.getParcelableExtra("Match");
+        userCharacter = match.getUserCharacter();
+
         startingStatPoints = userCharacter.getAvailableStatPoints();
 
         characterImageView = findViewById(R.id.imageView_Character);
@@ -186,8 +190,7 @@ public class SelectStatsActivity extends AppCompatActivity {
 
     private void goToEnemyIntro(){
         Intent intent = new Intent(this, EnemyIntroductionActivity.class);
-        intent.putExtra("UserCharacter", userCharacter);
-        intent.putExtra("EnemySequence", (Parcelable) null);
+        intent.putExtra("Match", match);
         startActivity(intent);
     }
 }

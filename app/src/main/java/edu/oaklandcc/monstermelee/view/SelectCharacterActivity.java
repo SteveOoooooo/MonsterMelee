@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.oaklandcc.monstermelee.R;
+import edu.oaklandcc.monstermelee.model.EnemyCharacter;
+import edu.oaklandcc.monstermelee.model.EnemySequence;
+import edu.oaklandcc.monstermelee.model.Match;
 import edu.oaklandcc.monstermelee.model.UserCharacter;
 
 public class SelectCharacterActivity extends AppCompatActivity {
@@ -147,8 +150,19 @@ public class SelectCharacterActivity extends AppCompatActivity {
 
     private void characterSelected(UserCharacter selectedCharacter){
 
+        List<EnemyCharacter> enemies = new ArrayList<>();
+
+        enemies.add(new EnemyCharacter("Reaper",100, 100,
+                100, 50, R.drawable.reaperright, 200));
+        enemies.add(new EnemyCharacter("Ogre",100, 100,
+                100, 50, R.drawable.ogreright, 100));
+
+        EnemySequence enemySequence = new EnemySequence(enemies);
+        Match match = new Match(selectedCharacter, enemySequence);
+
+
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
-        selectStatsIntent.putExtra("SelectedCharacter", selectedCharacter);
+        selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
     }
 }

@@ -22,7 +22,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
 
     EnemySequence enemySequence;
     UserCharacter userCharacter;
-    Match nextMatch;
+    Match match;
 
     ImageView EnemyImageView;
     TextView EnemyNameTextView;
@@ -45,27 +45,10 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
         FightButton = findViewById(R.id.button_goToBattle);
 
         Intent intent = getIntent();
+        match = intent.getParcelableExtra("Match");
 
-        if (intent.getParcelableExtra("EnemySequence") == null){
-
-            List<EnemyCharacter> enemies = new ArrayList<>();
-
-            enemies.add(new EnemyCharacter("Reaper",100, 100, 100, 50, R.drawable.reaperright, 200));
-            enemies.add(new EnemyCharacter("Ogre",100, 100, 100, 50, R.drawable.ogreright, 100));
-
-            enemySequence = new EnemySequence(enemies);
-        }
-        else{
-            enemySequence = intent.getParcelableExtra("EnemySequence");
-            enemySequence.nextEnemy();
-        }
-
-        userCharacter = intent.getParcelableExtra("UserCharacter");
-
-        nextMatch = new Match(userCharacter, enemySequence);
-
-        EnemyImageView.setBackground(this.getResources().getDrawable(enemySequence.getCurrentEnemy().getCharImage(), getTheme()));
-        EnemyNameTextView.setText(enemySequence.getCurrentEnemy().getName());
+        EnemyImageView.setBackground(this.getResources().getDrawable(match.getEnemyCharacter().getCharImage(), getTheme()));
+        EnemyNameTextView.setText(match.getEnemyCharacter().getName());
 
         FightButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +60,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
 
     private void startFight() {
         Intent intent = new Intent(this, FightActivity.class);
-        intent.putExtra("NextMatch", nextMatch);
+        intent.putExtra("Match", match);
         startActivity(intent);
     }
 }
