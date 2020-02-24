@@ -1,6 +1,9 @@
 package edu.oaklandcc.monstermelee.model;
 
-public class EnemyCharacter extends BaseCharacter {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class EnemyCharacter extends BaseCharacter implements Parcelable {
 
     private int xpReward;
 
@@ -14,6 +17,34 @@ public class EnemyCharacter extends BaseCharacter {
         this.charImage = charImage;
         this.xpReward = xpReward;
     }
+
+    protected EnemyCharacter(Parcel in) {
+        super(in);
+        xpReward = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeInt(xpReward);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<EnemyCharacter> CREATOR = new Creator<EnemyCharacter>() {
+        @Override
+        public EnemyCharacter createFromParcel(Parcel in) {
+            return new EnemyCharacter(in);
+        }
+
+        @Override
+        public EnemyCharacter[] newArray(int size) {
+            return new EnemyCharacter[size];
+        }
+    };
 
     public int getXpReward(){
         return xpReward;

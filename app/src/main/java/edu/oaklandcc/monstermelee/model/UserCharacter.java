@@ -37,6 +37,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable{
         this.experiencePoints = 0;
         this.level = 1;
         this.availableStatPoints = STARTING_STAT_POINTS;
+        this.currentHealthPoints = maxHealthPoints;
     }
 
 
@@ -46,6 +47,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable{
         experiencePoints = in.readInt();
         level = in.readInt();
         availableStatPoints = in.readInt();
+        currentHealthPoints = in.readInt();
     }
 
     @Override
@@ -55,6 +57,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable{
         dest.writeInt(experiencePoints);
         dest.writeInt(level);
         dest.writeInt(availableStatPoints);
+        dest.writeInt(currentHealthPoints);
     }
 
     @Override
