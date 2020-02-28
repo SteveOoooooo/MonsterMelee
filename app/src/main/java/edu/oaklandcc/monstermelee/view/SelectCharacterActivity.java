@@ -152,9 +152,9 @@ public class SelectCharacterActivity extends AppCompatActivity {
 
         List<EnemyCharacter> enemies = new ArrayList<>();
 
-        enemies.add(new EnemyCharacter("Reaper",100, 100,
+        enemies.add(new EnemyCharacter("Reaper",10000, 10000,
                 100, 50, R.drawable.reaperright, 200));
-        enemies.add(new EnemyCharacter("Ogre",100, 100,
+        enemies.add(new EnemyCharacter("Ogre",100, 1000,
                 100, 50, R.drawable.ogreright, 100));
 
         EnemySequence enemySequence = new EnemySequence(enemies);

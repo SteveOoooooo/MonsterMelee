@@ -91,6 +91,7 @@ public class SelectStatsActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.button_BackToChacacterSeelct);
         fightButton = findViewById(R.id.button_goToEnemyIntro);
+        fightButton.setEnabled(false);
 
         updateStatPoints();
 
@@ -181,6 +182,8 @@ public class SelectStatsActivity extends AppCompatActivity {
             critButtonAdd.setEnabled(false);
         if (userCharacter.getIntelligencePoints() >= UserCharacter.INTELLIGENCE_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             intelligenceButtonAdd.setEnabled(false);
+        if (userCharacter.getAvailableStatPoints() == 0)
+            fightButton.setEnabled(true);
     }
 
     private void goBackToCharacterSelect(){

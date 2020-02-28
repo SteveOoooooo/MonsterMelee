@@ -12,12 +12,11 @@
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
         android:padding="0dp"
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/progressBar_Crit"
+        app:layout_constraintStart_toStartOf="@+id/button_IntelligenceAdd"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <Button
@@ -26,10 +25,13 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:padding="0dp"
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/progressBar_Intelligence"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -62,25 +64,24 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="63dp"
+        android:layout_height="16dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Attack"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Health"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView_Character"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/barrier3" />
 
     <TextView
@@ -91,7 +92,7 @@
         android:text="@string/Crit"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ProgressBar
@@ -99,24 +100,27 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
         android:alpha="100"
         android:progress="50"
         android:scaleY="1.5"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_Attack"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Intelligence"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/barrier4"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar_Intelligence"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Character"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ProgressBar
@@ -124,9 +128,13 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Crit"
+        app:layout_constraintEnd_toStartOf="@+id/button_IntelligenceAdd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <ProgressBar
@@ -136,7 +144,7 @@
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Attack"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_Intelligence"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <ProgressBar
@@ -146,7 +154,7 @@
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Health"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_Crit"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -167,8 +175,12 @@
         android:id="@+id/imageView_Character"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:srcCompat="@tools:sample/avatars" />
@@ -194,12 +206,11 @@
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
         android:padding="0dp"
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/progressBar_Health"
+        app:layout_constraintStart_toStartOf="@+id/button_AttackAdd"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <Button
@@ -207,12 +218,11 @@
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
         android:padding="0dp"
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/progressBar_Attack"
+        app:layout_constraintStart_toStartOf="@+id/button_CritAdd"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <ProgressBar
@@ -220,14 +230,14 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
         android:scaleY="1.5"
+        app:layout_constraintBottom_toTopOf="@+id/barrier3"
         app:layout_constraintEnd_toStartOf="@+id/textView_statPointsAvailable"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView_statPointsAvailable"

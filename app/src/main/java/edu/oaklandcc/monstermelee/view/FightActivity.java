@@ -2,6 +2,8 @@ package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -67,6 +69,34 @@ public class FightActivity extends AppCompatActivity {
                 goToGiveUpScreen();
             }
         });
+
+        attackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attack();
+            }
+        });
+    }
+
+    private void attack() {
+
+        currentMatch.userAttack();
+        animateCharacters(500, 325);
+        updateEnemyHealthProgressBar();
+
+
+        if (!currentMatch.enemyIsDead()) {
+            currentMatch.enemyAttack();
+            updatePlayerHealthProgressBar();
+            //animateCharacters(500, -325);
+        }
+        else {
+            goToWinScreen();
+        }
+
+        if (currentMatch.userIsDead()){
+            goToLoseScreen();
+        }
     }
 
     private void goToGiveUpScreen() {
@@ -82,5 +112,30 @@ public class FightActivity extends AppCompatActivity {
     private void updatePlayerHealthProgressBar() {
         playerProgressBar.setProgress(100 * currentMatch.getUserCharacter().getCurrentHealthPoints()
                 / currentMatch.getUserCharacter().getMaxHealthPoints());
+    }
+
+
+    private void goToWinScreen(){
+
+    }
+
+    private void goToLoseScreen(){
+
+    }
+
+
+    private void animateCharacters(int animationDuration, float animationDistance){
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.TRANSLATION_X, 0f, animationDistance);
+        playerAnimation.setDuration(animationDuration);
+
+        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.TRANSLATION_X, 0f, -animationDistance);
+        enemyAnimation.setDuration(animationDuration);
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(playerAnimation).with(enemyAnimation);
+
+        animatorSet.start();
+
+
     }
 }

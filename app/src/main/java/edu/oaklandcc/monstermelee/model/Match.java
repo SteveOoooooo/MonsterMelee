@@ -33,22 +33,24 @@ public class Match implements Parcelable {
         }
     };
 
-    public Turn getCurrentTurn() {
-        return currentTurn;
+    public int userAttack(){
+        int hitPoints = userCharacter.getAttackPoints();
+        enemySequence.getCurrentEnemy().takeDamage(hitPoints);
+        return hitPoints;
     }
 
-    public int getCurrentHit() {
-        return currentHit;
+    public int enemyAttack(){
+        int hitPoints = enemySequence.getCurrentEnemy().getAttackPoints();
+        userCharacter.takeDamage(hitPoints);
+        return hitPoints;
     }
 
-    public void nextTurn() {
-        if (currentTurn == Turn.USER) {
-            currentTurn = Turn.ENEMY;
-            this.currentHit = enemySequence.getCurrentEnemy().getAttackPoints();
-        } else {
-            currentTurn = Turn.USER;
-            this.currentHit = userCharacter.getAttackPoints();
-        }
+    public boolean enemyIsDead(){
+        return enemySequence.getCurrentEnemy().isDead();
+    }
+
+    public boolean userIsDead(){
+        return userCharacter.isDead();
     }
 
     public UserCharacter getUserCharacter() {
