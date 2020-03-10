@@ -240,6 +240,7 @@ public class FightActivity extends AppCompatActivity {
 
     private void userDead(){
         playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
+        enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
         float enemyStartX = enemyImageView.getX();
 
@@ -253,6 +254,7 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 goToLoseScreen();
             }
         });
@@ -261,6 +263,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void enemyDead(){
+        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
         float playerStartX = playerImageView.getX();
@@ -274,6 +277,7 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 goToWinScreen();
             }
         });
