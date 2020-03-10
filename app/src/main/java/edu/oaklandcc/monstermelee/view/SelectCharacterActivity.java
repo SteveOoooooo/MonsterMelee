@@ -64,26 +64,29 @@ public class SelectCharacterActivity extends AppCompatActivity {
 
         characterList.add(new UserCharacter("Black", 500,
                 500, 100,
-                R.drawable.blackleft, 100));
+                R.drawable.blackleft, R.drawable.blackhurtleft, R.drawable.blackattackleft,
+                R.drawable.blackdeadleft, 100));
         characterList.add(new UserCharacter("Blue", 300,
                 300, 200,
-                R.drawable.blueleft, 200));
+                R.drawable.blueleft, R.drawable.bluehurtleft, R.drawable.blueattackleft,
+                R.drawable. bluedeadleft, 200));
         characterList.add(new UserCharacter("Green", 200,
                 200, 500,
-                R.drawable.greenleft, 300));
+                R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
+                R.drawable.greendeadleft,300));
 
         textView0 = findViewById(R.id.textView_Char0);
         textView0.setText(characterList.get(0).getName());
         button0 = findViewById(R.id.button_Character0);
         button0.setBackground(getResources().getDrawable(characterList.get(0).getCharImage(), getTheme()));
         healthBar0 = findViewById(R.id.progressBar_Health0);
-        healthBar0.setProgress(100*characterList.get(0).getMaxHealthPoints()/UserCharacter.HEALTH_POINTS_LIMIT);
+        healthBar0.setProgress(100 * characterList.get(0).getMaxHealthPoints() / UserCharacter.HEALTH_POINTS_LIMIT);
         attackBar0 = findViewById(R.id.progressBar_Attack0);
-        attackBar0.setProgress(100*characterList.get(0).getAttackPoints()/UserCharacter.ATTACK_POINTS_LIMIT);
+        attackBar0.setProgress(100 * characterList.get(0).getAttackPoints() / UserCharacter.ATTACK_POINTS_LIMIT);
         critBar0 = findViewById(R.id.progressBar_Crit0);
-        critBar0.setProgress(100*characterList.get(0).getCriticalHitPoints()/UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
+        critBar0.setProgress(100 * characterList.get(0).getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         intelligenceBar0 = findViewById(R.id.progressBar_Intelligence0);
-        intelligenceBar0.setProgress(100*characterList.get(0).getIntelligencePoints()/UserCharacter.INTELLIGENCE_POINTS_LIMIT);
+        intelligenceBar0.setProgress(100 * characterList.get(0).getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
 
 
         textView1 = findViewById(R.id.textView_Char1);
@@ -91,46 +94,46 @@ public class SelectCharacterActivity extends AppCompatActivity {
         button1 = findViewById(R.id.button_Character1);
         button1.setBackground(getResources().getDrawable(characterList.get(1).getCharImage(), getTheme()));
         healthBar1 = findViewById(R.id.progressBar_Health1);
-        healthBar1.setProgress(100*characterList.get(1).getMaxHealthPoints()/UserCharacter.HEALTH_POINTS_LIMIT);
+        healthBar1.setProgress(100 * characterList.get(1).getMaxHealthPoints() / UserCharacter.HEALTH_POINTS_LIMIT);
         attackBar1 = findViewById(R.id.progressBar_Attack1);
-        attackBar1.setProgress(100*characterList.get(1).getAttackPoints()/UserCharacter.ATTACK_POINTS_LIMIT);
+        attackBar1.setProgress(100 * characterList.get(1).getAttackPoints() / UserCharacter.ATTACK_POINTS_LIMIT);
         critBar1 = findViewById(R.id.progressBar_Crit1);
-        critBar1.setProgress(100*characterList.get(1).getCriticalHitPoints()/UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
+        critBar1.setProgress(100 * characterList.get(1).getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         intelligenceBar1 = findViewById(R.id.progressBar_Intelligence1);
-        intelligenceBar1.setProgress(100*characterList.get(1).getIntelligencePoints()/UserCharacter.INTELLIGENCE_POINTS_LIMIT);
+        intelligenceBar1.setProgress(100 * characterList.get(1).getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
 
         textView2 = findViewById(R.id.textView_Char2);
         textView2.setText(characterList.get(2).getName());
         button2 = findViewById(R.id.button_Character2);
         button2.setBackground(getResources().getDrawable(characterList.get(2).getCharImage(), getTheme()));
         healthBar2 = findViewById(R.id.progressBar_Health2);
-        healthBar2.setProgress(100*characterList.get(2).getMaxHealthPoints()/UserCharacter.HEALTH_POINTS_LIMIT);
+        healthBar2.setProgress(100 * characterList.get(2).getMaxHealthPoints() / UserCharacter.HEALTH_POINTS_LIMIT);
         attackBar2 = findViewById(R.id.progressBar_Attack2);
-        attackBar2.setProgress(100*characterList.get(2).getAttackPoints()/UserCharacter.ATTACK_POINTS_LIMIT);
+        attackBar2.setProgress(100 * characterList.get(2).getAttackPoints() / UserCharacter.ATTACK_POINTS_LIMIT);
         critBar2 = findViewById(R.id.progressBar_Crit2);
-        critBar2.setProgress(100*characterList.get(2).getCriticalHitPoints()/UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
+        critBar2.setProgress(100 * characterList.get(2).getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         intelligenceBar2 = findViewById(R.id.progressBar_Intelligence2);
-        intelligenceBar2.setProgress(100*characterList.get(2).getIntelligencePoints()/UserCharacter.INTELLIGENCE_POINTS_LIMIT);
+        intelligenceBar2.setProgress(100 * characterList.get(2).getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
 
         backButton = findViewById(R.id.button_backToStart);
 
-        button0.setOnClickListener(new View.OnClickListener(){
+        button0.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 characterSelected(characterList.get(0));
             }
         });
 
-        button1.setOnClickListener(new View.OnClickListener(){
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 characterSelected(characterList.get(1));
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener(){
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 characterSelected(characterList.get(2));
             }
         });
@@ -148,14 +151,18 @@ public class SelectCharacterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void characterSelected(UserCharacter selectedCharacter){
+    private void characterSelected(UserCharacter selectedCharacter) {
 
         List<EnemyCharacter> enemies = new ArrayList<>();
 
-        enemies.add(new EnemyCharacter("Reaper",10000, 10000,
-                100, 50, R.drawable.reaperright, 200));
-        enemies.add(new EnemyCharacter("Ogre",100, 1000,
-                100, 50, R.drawable.ogreright, 100));
+        enemies.add(new EnemyCharacter("Reaper", 2000,
+                100, 50, R.drawable.reaperright,
+                R.drawable.reaperhurtright, R.drawable.reaperattackright,
+                R.drawable.reaperdeadright, 200));
+        enemies.add(new EnemyCharacter("Ogre", 3000,
+                100, 50, R.drawable.ogreright,
+                R.drawable.reaperhurtright, R.drawable.reaperattackright,
+                R.drawable.reaperdeadright, 100));
 
         EnemySequence enemySequence = new EnemySequence(enemies);
         Match match = new Match(selectedCharacter, enemySequence);

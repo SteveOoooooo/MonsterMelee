@@ -34,13 +34,13 @@ public class Match implements Parcelable {
     };
 
     public int userAttack(){
-        int hitPoints = userCharacter.getAttackPoints();
+        int hitPoints = userCharacter.calculateHit();
         enemySequence.getCurrentEnemy().takeDamage(hitPoints);
         return hitPoints;
     }
 
     public int enemyAttack(){
-        int hitPoints = enemySequence.getCurrentEnemy().getAttackPoints();
+        int hitPoints = enemySequence.getCurrentEnemy().calculateHit();
         userCharacter.takeDamage(hitPoints);
         return hitPoints;
     }

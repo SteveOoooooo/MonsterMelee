@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class UserCharacter extends BaseCharacter implements Parcelable{
+public class UserCharacter extends BaseCharacter implements Parcelable {
 
     public static final int INTELLIGENCE_POINTS_LIMIT = 1000;
     private static final int INTELLIGENCE_POINTS_INCREMENT = 100;
@@ -27,7 +27,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable{
     private int availableStatPoints;
 
     public UserCharacter(String name, int maxHealthPoints, int attackPoints,
-                         int criticalHitPoints, int charImage, int intelligencePoints) {
+                         int criticalHitPoints, int charImage, int charHurtImage, int charAttackImage, int charDeadImage, int intelligencePoints) {
         this.name = name;
         this.maxHealthPoints = maxHealthPoints;
         this.attackPoints = attackPoints;
@@ -38,6 +38,9 @@ public class UserCharacter extends BaseCharacter implements Parcelable{
         this.level = 1;
         this.availableStatPoints = STARTING_STAT_POINTS;
         this.currentHealthPoints = maxHealthPoints;
+        this.charHurtImage = charHurtImage;
+        this.charAttackImage = charAttackImage;
+        this.charDeadImage = charDeadImage;
     }
 
 

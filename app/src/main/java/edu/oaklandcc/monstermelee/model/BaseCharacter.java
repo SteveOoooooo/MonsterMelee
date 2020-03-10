@@ -14,11 +14,14 @@ public class BaseCharacter implements Parcelable {
     protected int criticalHitPoints;
     private boolean dead;
     protected int charImage;
+    protected int charHurtImage;
+    protected int charDeadImage;
+    protected int charAttackImage;
+
 
     public BaseCharacter() {
         this.dead = false;
     }
-
 
     protected BaseCharacter(Parcel in) {
         name = in.readString();
@@ -28,6 +31,9 @@ public class BaseCharacter implements Parcelable {
         criticalHitPoints = in.readInt();
         dead = in.readByte() != 0;
         charImage = in.readInt();
+        charHurtImage = in.readInt();
+        charDeadImage = in.readInt();
+        charAttackImage = in.readInt();
     }
 
     public static final Creator<BaseCharacter> CREATOR = new Creator<BaseCharacter>() {
@@ -90,6 +96,18 @@ public class BaseCharacter implements Parcelable {
         return criticalHitPoints;
     }
 
+    public int getCharHurtImage() {
+        return charHurtImage;
+    }
+
+    public int getCharDeadImage() {
+        return charDeadImage;
+    }
+
+    public int getCharAttackImage() {
+        return charAttackImage;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -104,5 +122,8 @@ public class BaseCharacter implements Parcelable {
         parcel.writeInt(criticalHitPoints);
         parcel.writeByte((byte) (dead ? 1 : 0));
         parcel.writeInt(charImage);
+        parcel.writeInt(charHurtImage);
+        parcel.writeInt(charDeadImage);
+        parcel.writeInt(charAttackImage);
     }
 }
