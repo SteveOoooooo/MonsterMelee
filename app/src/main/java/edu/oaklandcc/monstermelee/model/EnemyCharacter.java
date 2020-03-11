@@ -9,15 +9,15 @@ public class EnemyCharacter extends BaseCharacter implements Parcelable {
 
     public EnemyCharacter(String name, int maxHealthPoints, int attackPoints,
                           int criticalHitPoints, int charImage, int charHurtImage, int charAttackImage, int charDeadImage, int xpReward) {
-        this.name = name;
-        this.maxHealthPoints = maxHealthPoints;
-        this.currentHealthPoints = maxHealthPoints;
-        this.attackPoints = attackPoints;
-        this.criticalHitPoints = criticalHitPoints;
-        this.charImage = charImage;
-        this.charHurtImage = charHurtImage;
-        this.charAttackImage = charAttackImage;
-        this.charDeadImage = charDeadImage;
+        setName(name);
+        setMaxHealthPoints(maxHealthPoints);
+        setCurrentHealthPoints(maxHealthPoints);
+        setAttackPoints(attackPoints);
+        setCriticalHitPoints(criticalHitPoints);
+        setCharImage(charImage);
+        setCharHurtImage(charHurtImage);
+        setCharAttackImage(charAttackImage);
+        setCharDeadImage(charDeadImage);
         this.xpReward = xpReward;
     }
 

@@ -6,16 +6,14 @@ import android.os.Parcelable;
 public class Match implements Parcelable {
     private EnemySequence enemySequence;
     private UserCharacter userCharacter;
-    private Turn currentTurn;
     private int currentHit;
 
     public Match(UserCharacter user, EnemySequence enemy) {
         this.userCharacter = user;
         this.enemySequence = enemy;
-        this.currentTurn = Turn.USER;
     }
 
-    protected Match(Parcel in) {
+    private Match(Parcel in) {
         enemySequence = in.readParcelable(EnemyCharacter.class.getClassLoader());
         userCharacter = in.readParcelable(UserCharacter.class.getClassLoader());
         currentHit = in.readInt();

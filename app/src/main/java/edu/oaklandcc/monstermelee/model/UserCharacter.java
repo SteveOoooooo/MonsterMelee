@@ -28,19 +28,20 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
 
     public UserCharacter(String name, int maxHealthPoints, int attackPoints,
                          int criticalHitPoints, int charImage, int charHurtImage, int charAttackImage, int charDeadImage, int intelligencePoints) {
-        this.name = name;
-        this.maxHealthPoints = maxHealthPoints;
-        this.attackPoints = attackPoints;
-        this.criticalHitPoints = criticalHitPoints;
-        this.charImage = charImage;
+        setName(name);
+        setMaxHealthPoints(maxHealthPoints);
+        setAttackPoints(attackPoints);
+        setCriticalHitPoints(criticalHitPoints);
+        setCharImage(charImage);
+        setCurrentHealthPoints(maxHealthPoints);
+        setCharImage(charImage);
+        setCharHurtImage(charHurtImage);
+        setCharAttackImage(charAttackImage);
+        setCharDeadImage(charDeadImage);
         this.intelligencePoints = intelligencePoints;
         this.experiencePoints = 0;
         this.level = 1;
         this.availableStatPoints = STARTING_STAT_POINTS;
-        this.currentHealthPoints = maxHealthPoints;
-        this.charHurtImage = charHurtImage;
-        this.charAttackImage = charAttackImage;
-        this.charDeadImage = charDeadImage;
     }
 
 
@@ -50,7 +51,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
         experiencePoints = in.readInt();
         level = in.readInt();
         availableStatPoints = in.readInt();
-        currentHealthPoints = in.readInt();
+        setCurrentHealthPoints(in.readInt());
     }
 
     @Override
@@ -60,7 +61,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
         dest.writeInt(experiencePoints);
         dest.writeInt(level);
         dest.writeInt(availableStatPoints);
-        dest.writeInt(currentHealthPoints);
+        dest.writeInt(getCurrentHealthPoints());
     }
 
     @Override
@@ -94,38 +95,38 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
     }
 
     public void resetHealth() {
-        this.currentHealthPoints = maxHealthPoints;
+        this.setCurrentHealthPoints(getMaxHealthPoints());
     }
 
     public void upgradeMaxHealth() {
-        if (this.maxHealthPoints > HEALTH_POINTS_LIMIT) {
+        if (this.getMaxHealthPoints() > HEALTH_POINTS_LIMIT) {
             Log.e("UpgradeError", "Exceeded health point limit.: ");
         } else {
-            this.maxHealthPoints += HEALTH_POINTS_INCREMENT;
-            if (this.maxHealthPoints > HEALTH_POINTS_LIMIT)
-                this.maxHealthPoints = HEALTH_POINTS_LIMIT;
+            this.setMaxHealthPoints(getMaxHealthPoints() + HEALTH_POINTS_INCREMENT);
+            if (this.getMaxHealthPoints() > HEALTH_POINTS_LIMIT)
+                this.setMaxHealthPoints(HEALTH_POINTS_LIMIT);
         }
         availableStatPoints--;
     }
 
     public void upgradeAttack() {
-        if (this.attackPoints > ATTACK_POINTS_LIMIT) {
+        if (this.getAttackPoints() > ATTACK_POINTS_LIMIT) {
             Log.e("UpgradeError", "Exceeded attack point limit.: ");
         } else {
-            this.attackPoints += ATTACK_POINTS_INCREMENT;
-            if (this.attackPoints > ATTACK_POINTS_LIMIT)
-                this.attackPoints = ATTACK_POINTS_LIMIT;
+            this.setAttackPoints(getAttackPoints() + ATTACK_POINTS_INCREMENT);
+            if (this.getAttackPoints() > ATTACK_POINTS_LIMIT)
+                this.setAttackPoints(ATTACK_POINTS_LIMIT);
         }
         availableStatPoints--;
     }
 
     public void upgradeCrit() {
-        if (this.criticalHitPoints > CRITICAL_ATTACK_POINTS_LIMIT) {
+        if (this.getCriticalHitPoints() > CRITICAL_ATTACK_POINTS_LIMIT) {
             Log.e("UpgradeError", "Exceeded critical hit point limit.: ");
         } else {
-            this.criticalHitPoints += CRITICAL_ATTACK_POINTS_INCREMENT;
-            if (this.criticalHitPoints > CRITICAL_ATTACK_POINTS_LIMIT)
-                this.criticalHitPoints = CRITICAL_ATTACK_POINTS_LIMIT;
+            this.setCriticalHitPoints(getCriticalHitPoints() + CRITICAL_ATTACK_POINTS_INCREMENT);
+            if (this.getCriticalHitPoints() > CRITICAL_ATTACK_POINTS_LIMIT)
+                this.setCriticalHitPoints(CRITICAL_ATTACK_POINTS_LIMIT);
         }
         availableStatPoints--;
     }

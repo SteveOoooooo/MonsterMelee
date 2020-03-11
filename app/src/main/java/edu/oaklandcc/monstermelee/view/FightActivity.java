@@ -7,16 +7,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
@@ -28,7 +25,7 @@ public class FightActivity extends AppCompatActivity {
     Button attackButton;
     ImageButton exitButton;
 
-    ImageView playerImageView;
+    ImageView userImageView;
     ImageView enemyImageView;
 
     ProgressBar playerProgressBar;
@@ -53,7 +50,7 @@ public class FightActivity extends AppCompatActivity {
         attackButton = findViewById(R.id.button_Attack);
         exitButton = findViewById(R.id.imageButton_exit);
 
-        playerImageView = findViewById(R.id.imageView_userCharacter);
+        userImageView = findViewById(R.id.imageView_userCharacter);
         enemyImageView = findViewById(R.id.imageView_enemyCharacter);
 
         playerProgressBar = findViewById(R.id.progressBar_characterHealth);
@@ -64,7 +61,7 @@ public class FightActivity extends AppCompatActivity {
         currentMatch = intent.getParcelableExtra("Match");
         currentMatch.getUserCharacter().resetHealth();
 
-        playerImageView.setBackground(getResources().getDrawable(
+        userImageView.setBackground(getResources().getDrawable(
                 currentMatch.getUserCharacter().getCharImage(), getTheme()));
         updateHealthProgressBar();
 
@@ -108,13 +105,13 @@ public class FightActivity extends AppCompatActivity {
 
     private void attackStep1() {
 
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
 
-        float playerStartX = playerImageView.getX();
+        float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.X,  playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X,  playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
@@ -145,13 +142,13 @@ public class FightActivity extends AppCompatActivity {
 
     private void attackStep2() {
 
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharHurtImage(), getTheme()));
 
-        float playerStartX = playerImageView.getX();
+        float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.X, playerStartX, playerStartX - animationDistance);
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
@@ -175,13 +172,13 @@ public class FightActivity extends AppCompatActivity {
 
     private void attackStep3() {
 
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
 
-        float playerStartX = playerImageView.getX();
+        float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.X,  playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X,  playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
@@ -209,13 +206,13 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void attackStep4() {
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharHurtImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharHurtImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
-        float playerStartX = playerImageView.getX();
+        float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.X, playerStartX, playerStartX - animationDistance);
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
@@ -231,7 +228,7 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
+                userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
             }
         });
@@ -239,7 +236,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void userDead(){
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
         float enemyStartX = enemyImageView.getX();
@@ -263,11 +260,11 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void enemyDead(){
-        playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
+        userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
-        float playerStartX = playerImageView.getX();
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(playerImageView, View.X, playerStartX, playerStartX - animationDistance);
+        float playerStartX = userImageView.getX();
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
         playerAnimation.setDuration(animationDuration);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 
@@ -277,7 +274,7 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                playerImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
+                userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 goToWinScreen();
             }
         });
