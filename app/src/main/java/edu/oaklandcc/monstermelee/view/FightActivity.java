@@ -100,7 +100,9 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void goToLoseScreen(){
-
+        Intent intent = new Intent(this, GameOverActivity.class);
+        intent.putExtra("Match", currentMatch);
+        startActivity(intent);
     }
 
     private void attackStep1() {

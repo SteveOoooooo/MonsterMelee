@@ -13,4 +13,7 @@
     <string name="giveUP">Are you sure you want to give up?</string>
     <string name="Yes">yes</string>
     <string name="No">No</string>
+    <string name="Home">Home</string>
+    <string name="GameOver">Game Over</string>
+    <string name="YouDied">You Died...</string>
 </resources>

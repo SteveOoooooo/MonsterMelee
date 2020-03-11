@@ -51,6 +51,5 @@ public class GiveUpActivity extends AppCompatActivity {
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
-
     }
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.GiveUpActivity"></activity>
+        <activity android:name=".view.GameOverActivity"></activity>
+        <activity android:name=".view.GiveUpActivity" />
         <activity android:name=".view.FightActivity" />
         <activity android:name=".view.EnemyIntroductionActivity" />
         <activity android:name=".view.SelectStatsActivity" />
