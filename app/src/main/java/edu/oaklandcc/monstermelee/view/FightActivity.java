@@ -106,6 +106,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void attackStep1() {
+        attackButton.setEnabled(false);
 
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
@@ -232,9 +233,9 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
+                attackButton.setEnabled(true);
             }
         });
-
     }
 
     private void userDead(){
