@@ -4,6 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Match implements Parcelable {
+    public static final Creator<Match> CREATOR = new Creator<Match>() {
+        @Override
+        public Match createFromParcel(Parcel in) {
+            return new Match(in);
+        }
+
+        @Override
+        public Match[] newArray(int size) {
+            return new Match[size];
+        }
+    };
     private EnemySequence enemySequence;
     private UserCharacter userCharacter;
     private int currentHit;
@@ -19,35 +30,23 @@ public class Match implements Parcelable {
         currentHit = in.readInt();
     }
 
-    public static final Creator<Match> CREATOR = new Creator<Match>() {
-        @Override
-        public Match createFromParcel(Parcel in) {
-            return new Match(in);
-        }
-
-        @Override
-        public Match[] newArray(int size) {
-            return new Match[size];
-        }
-    };
-
-    public int userAttack(){
+    public int userAttack() {
         int hitPoints = userCharacter.calculateHit();
         enemySequence.getCurrentEnemy().takeDamage(hitPoints);
         return hitPoints;
     }
 
-    public int enemyAttack(){
+    public int enemyAttack() {
         int hitPoints = enemySequence.getCurrentEnemy().calculateHit();
         userCharacter.takeDamage(hitPoints);
         return hitPoints;
     }
 
-    public boolean enemyIsDead(){
+    public boolean enemyIsDead() {
         return enemySequence.getCurrentEnemy().isDead();
     }
 
-    public boolean userIsDead(){
+    public boolean userIsDead() {
         return userCharacter.isDead();
     }
 
@@ -59,7 +58,7 @@ public class Match implements Parcelable {
         return enemySequence.getCurrentEnemy();
     }
 
-    public EnemyCharacter nextMatch(){
+    public EnemyCharacter nextMatch() {
         return enemySequence.nextEnemy();
     }
 

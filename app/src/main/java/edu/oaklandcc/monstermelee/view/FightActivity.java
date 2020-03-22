@@ -19,20 +19,17 @@ import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
 public class FightActivity extends AppCompatActivity {
+    private static final int animationDuration = 1000;
+    private static final int animationDistance = 325;
 
     Match currentMatch;
 
     Button attackButton;
     ImageButton exitButton;
-
     ImageView userImageView;
     ImageView enemyImageView;
-
     ProgressBar playerProgressBar;
     ProgressBar enemyProgressBar;
-
-    private static final int animationDuration = 1000;
-    private static final int animationDistance = 325;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +76,8 @@ public class FightActivity extends AppCompatActivity {
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attackStep1();           }
+                attackStep1();
+            }
         });
     }
 
@@ -95,13 +93,13 @@ public class FightActivity extends AppCompatActivity {
                 / currentMatch.getUserCharacter().getMaxHealthPoints());
     }
 
-    private void goToWinScreen(){
+    private void goToWinScreen() {
         Intent intent = new Intent(this, WonMatchActivity.class);
         intent.putExtra("Match", currentMatch);
         startActivity(intent);
     }
 
-    private void goToLoseScreen(){
+    private void goToLoseScreen() {
         Intent intent = new Intent(this, GameOverActivity.class);
         intent.putExtra("Match", currentMatch);
         startActivity(intent);
@@ -116,11 +114,11 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X,  playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
-        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX -animationDistance);
+        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         enemyAnimation.setDuration(animationDuration);
 
@@ -141,8 +139,8 @@ public class FightActivity extends AppCompatActivity {
             }
         });
 
-    animatorSet.play(playerAnimation).with(enemyAnimation);
-    animatorSet.start();
+        animatorSet.play(playerAnimation).with(enemyAnimation);
+        animatorSet.start();
     }
 
     private void attackStep2() {
@@ -183,11 +181,11 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X,  playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 
-        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX -animationDistance);
+        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         enemyAnimation.setDuration(animationDuration);
 
@@ -240,7 +238,7 @@ public class FightActivity extends AppCompatActivity {
         });
     }
 
-    private void userDead(){
+    private void userDead() {
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
@@ -264,7 +262,7 @@ public class FightActivity extends AppCompatActivity {
         animatorSet.start();
     }
 
-    private void enemyDead(){
+    private void enemyDead() {
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 

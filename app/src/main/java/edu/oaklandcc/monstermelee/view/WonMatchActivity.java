@@ -17,13 +17,13 @@ import edu.oaklandcc.monstermelee.model.Match;
 
 public class WonMatchActivity extends AppCompatActivity {
 
+    long animationDuration = 1500;
+
     Match match;
     ImageView userImage;
     ImageView enemyImage;
     TextView youWonTextView;
     Button continueButton;
-
-    long animationDuration = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class WonMatchActivity extends AppCompatActivity {
 
         continueButton.setAlpha(0);
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(youWonTextView, View.TRANSLATION_Y,  -1000, 0);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(youWonTextView, View.TRANSLATION_Y, -1000, 0);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         playerAnimation.setDuration(animationDuration);
 

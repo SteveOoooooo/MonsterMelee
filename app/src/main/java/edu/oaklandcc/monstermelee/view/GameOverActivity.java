@@ -17,13 +17,13 @@ import edu.oaklandcc.monstermelee.model.Match;
 
 public class GameOverActivity extends AppCompatActivity {
 
+    long animationDuration = 1500;
+
     Match currentMatch;
     ImageView userImage;
     TextView youDiedTextView;
     TextView gameOverTextView;
     Button homeButton;
-
-    long animationDuration = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

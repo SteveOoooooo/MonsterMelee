@@ -7,19 +7,29 @@ import android.util.Log;
 public class UserCharacter extends BaseCharacter implements Parcelable {
 
     public static final int INTELLIGENCE_POINTS_LIMIT = 1000;
+    public static final int EXPERIENCE_POINTS_LIMIT = 1000;
+    public static final int HEALTH_POINTS_LIMIT = 1000;
+    public static final int ATTACK_POINTS_LIMIT = 1000;
+    public static final int CRITICAL_ATTACK_POINTS_LIMIT = 1000;
+    public static final Creator<UserCharacter> CREATOR = new Creator<UserCharacter>() {
+        @Override
+        public UserCharacter createFromParcel(Parcel in) {
+            return new UserCharacter(in);
+        }
+
+        @Override
+        public UserCharacter[] newArray(int size) {
+            return new UserCharacter[size];
+        }
+    };
     private static final int INTELLIGENCE_POINTS_INCREMENT = 100;
     private static final int INTELLIGENCE_BONUS_XP = 10;
-    public static final int EXPERIENCE_POINTS_LIMIT = 1000;
     private static final int XP_PER_LEVEL = 100;
-    public static final int HEALTH_POINTS_LIMIT = 1000;
     private static final int HEALTH_POINTS_INCREMENT = 100;
-    public static final int ATTACK_POINTS_LIMIT = 1000;
     private static final int ATTACK_POINTS_INCREMENT = 100;
-    public static final int CRITICAL_ATTACK_POINTS_LIMIT = 1000;
     private static final int CRITICAL_ATTACK_POINTS_INCREMENT = 100;
     private static final int STARTING_STAT_POINTS = 2;
     private static final int STAT_POINTS_PER_LEVEL = 1;
-
     private int intelligencePoints;
     private int experiencePoints;
     private int level;
@@ -42,7 +52,6 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
         this.level = 1;
         this.availableStatPoints = STARTING_STAT_POINTS;
     }
-
 
     protected UserCharacter(Parcel in) {
         super(in);
@@ -68,22 +77,10 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
         return 0;
     }
 
-    public static final Creator<UserCharacter> CREATOR = new Creator<UserCharacter>() {
-        @Override
-        public UserCharacter createFromParcel(Parcel in) {
-            return new UserCharacter(in);
-        }
-
-        @Override
-        public UserCharacter[] newArray(int size) {
-            return new UserCharacter[size];
-        }
-    };
-
     public void awardXP(int experiencePoints) {
 
         if (this.experiencePoints >= EXPERIENCE_POINTS_LIMIT)
-            Log.e( "UpgradeError", "Experience points has exceeded limit.");
+            Log.e("UpgradeError", "Experience points has exceeded limit.");
         else {
             this.experiencePoints += experiencePoints +
                     INTELLIGENCE_BONUS_XP * (intelligencePoints / 100D);

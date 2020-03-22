@@ -72,7 +72,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
         characterList.add(new UserCharacter("Green", 200,
                 200, 500,
                 R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
-                R.drawable.greendeadleft,300));
+                R.drawable.greendeadleft, 300));
 
         textView0 = findViewById(R.id.textView_selectChar_char0);
         textView0.setText(characterList.get(0).getName());
@@ -86,7 +86,6 @@ public class SelectCharacterActivity extends AppCompatActivity {
         critBar0.setProgress(100 * characterList.get(0).getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         intelligenceBar0 = findViewById(R.id.progressBar_selectChar_intelligence0);
         intelligenceBar0.setProgress(100 * characterList.get(0).getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
-
 
         textView1 = findViewById(R.id.textView_selectChar_char1);
         textView1.setText(characterList.get(1).getName());
@@ -151,7 +150,6 @@ public class SelectCharacterActivity extends AppCompatActivity {
     }
 
     private void characterSelected(UserCharacter selectedCharacter) {
-
         EnemySequence enemySequence = new EnemySequence();
         Match match = new Match(selectedCharacter, enemySequence);
 

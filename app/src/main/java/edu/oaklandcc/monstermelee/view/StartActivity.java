@@ -18,7 +18,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_start);
         this.getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -30,16 +30,15 @@ public class StartActivity extends AppCompatActivity {
 
         startButton = findViewById(R.id.button_start_start);
 
-        startButton.setOnClickListener(new View.OnClickListener(){
-           @Override
-            public void onClick(View v){
-               startGame();
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startGame();
             }
         });
     }
 
-
-    private void startGame(){
+    private void startGame() {
 
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);

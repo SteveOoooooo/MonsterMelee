@@ -5,6 +5,17 @@ import android.os.Parcelable;
 
 public class EnemyCharacter extends BaseCharacter implements Parcelable {
 
+    public static final Creator<EnemyCharacter> CREATOR = new Creator<EnemyCharacter>() {
+        @Override
+        public EnemyCharacter createFromParcel(Parcel in) {
+            return new EnemyCharacter(in);
+        }
+
+        @Override
+        public EnemyCharacter[] newArray(int size) {
+            return new EnemyCharacter[size];
+        }
+    };
     private int xpReward;
 
     public EnemyCharacter(String name, int maxHealthPoints, int attackPoints,
@@ -37,19 +48,7 @@ public class EnemyCharacter extends BaseCharacter implements Parcelable {
         return 0;
     }
 
-    public static final Creator<EnemyCharacter> CREATOR = new Creator<EnemyCharacter>() {
-        @Override
-        public EnemyCharacter createFromParcel(Parcel in) {
-            return new EnemyCharacter(in);
-        }
-
-        @Override
-        public EnemyCharacter[] newArray(int size) {
-            return new EnemyCharacter[size];
-        }
-    };
-
-    public int getXpReward(){
+    public int getXpReward() {
         return xpReward;
     }
 

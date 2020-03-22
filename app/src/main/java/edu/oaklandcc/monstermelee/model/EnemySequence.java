@@ -10,13 +10,23 @@ import edu.oaklandcc.monstermelee.R;
 
 public class EnemySequence implements Parcelable {
 
+    public static final Creator<EnemySequence> CREATOR = new Creator<EnemySequence>() {
+        @Override
+        public EnemySequence createFromParcel(Parcel in) {
+            return new EnemySequence(in);
+        }
+
+        @Override
+        public EnemySequence[] newArray(int size) {
+            return new EnemySequence[size];
+        }
+    };
     private List<EnemyCharacter> enemies;
     private int currentEnemyIndex;
 
-    public EnemySequence(){
+    public EnemySequence() {
         this.enemies = enemies;
         currentEnemyIndex = 0;
-
         enemies = new ArrayList<>();
 
         enemies.add(new EnemyCharacter("Reaper", 2000,
@@ -29,37 +39,22 @@ public class EnemySequence implements Parcelable {
                 R.drawable.ogredeadright, 100));
     }
 
-
     protected EnemySequence(Parcel in) {
         enemies = in.createTypedArrayList(EnemyCharacter.CREATOR);
         currentEnemyIndex = in.readInt();
     }
 
-    public static final Creator<EnemySequence> CREATOR = new Creator<EnemySequence>() {
-        @Override
-        public EnemySequence createFromParcel(Parcel in) {
-            return new EnemySequence(in);
-        }
-
-        @Override
-        public EnemySequence[] newArray(int size) {
-            return new EnemySequence[size];
-        }
-    };
-
-    EnemyCharacter getCurrentEnemy(){
+    EnemyCharacter getCurrentEnemy() {
         return enemies.get(currentEnemyIndex);
     }
 
-    EnemyCharacter nextEnemy(){
+    EnemyCharacter nextEnemy() {
         EnemyCharacter nextEnemy = null;
         this.currentEnemyIndex++;
         if (currentEnemyIndex < enemies.size())
             nextEnemy = enemies.get(currentEnemyIndex);
         return nextEnemy;
     }
-
-
 
     @Override
     public int describeContents() {

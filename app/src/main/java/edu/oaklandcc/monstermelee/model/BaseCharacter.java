@@ -18,7 +18,6 @@ public class BaseCharacter implements Parcelable {
     private int charDeadImage;
     private int charAttackImage;
 
-
     BaseCharacter() {
         this.dead = false;
     }
