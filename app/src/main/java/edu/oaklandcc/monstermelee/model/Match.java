@@ -59,6 +59,10 @@ public class Match implements Parcelable {
         return enemySequence.getCurrentEnemy();
     }
 
+    public EnemyCharacter nextMatch(){
+        return enemySequence.nextEnemy();
+    }
+
     @Override
     public int describeContents() {
         return 0;

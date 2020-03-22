@@ -8,7 +8,7 @@
     tools:context=".view.SelectStatsActivity">
 
     <Button
-        android:id="@+id/button_CritAdd"
+        android:id="@+id/button_selectStats_critAdd"
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -16,11 +16,11 @@
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/button_IntelligenceAdd"
+        app:layout_constraintStart_toStartOf="@+id/button_selectStats_intelligenceAdd"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button_IntelligenceAdd"
+        android:id="@+id/button_selectStats_intelligenceAdd"
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -32,11 +32,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/progressBar_Intelligence"
+        app:layout_constraintStart_toEndOf="@+id/progressBar_selectStats_intelligence"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView_Char"
+        android:id="@+id/textView_selectStats_charName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -44,9 +44,9 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_Character"
-        app:layout_constraintStart_toStartOf="@+id/imageView_Character"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_Character" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView_selectStats_character"
+        app:layout_constraintStart_toStartOf="@+id/imageView_selectStats_character"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_selectStats_character" />
 
     <TextView
         android:id="@+id/textView3"
@@ -64,8 +64,8 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="63dp"
-        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Attack"
         android:textSize="18sp"
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Health"
+        android:id="@+id/progressBar_selectStats_health"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
         android:scaleY="1.5"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Attack"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectStats_attack"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
@@ -118,13 +118,13 @@
         android:text="@string/Intelligence"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/barrier4"
-        app:layout_constraintEnd_toStartOf="@+id/progressBar_Intelligence"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar_selectStats_intelligence"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView_Character"
+        app:layout_constraintStart_toEndOf="@+id/imageView_selectStats_character"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Intelligence"
+        android:id="@+id/progressBar_selectStats_intelligence"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -132,29 +132,29 @@
         android:layout_marginEnd="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/button_IntelligenceAdd"
+        app:layout_constraintEnd_toStartOf="@+id/button_selectStats_intelligenceAdd"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Crit"
+        android:id="@+id/progressBar_selectStats_crit"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Intelligence"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectStats_intelligence"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Attack"
+        android:id="@+id/progressBar_selectStats_attack"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Crit"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectStats_crit"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -172,7 +172,7 @@
         tools:layout_editor_absoluteY="411dp" />
 
     <ImageView
-        android:id="@+id/imageView_Character"
+        android:id="@+id/imageView_selectStats_character"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
@@ -190,7 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="imageView_Character"
+        app:constraint_referenced_ids="imageView_selectStats_character"
         tools:layout_editor_absoluteY="411dp" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -198,11 +198,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="imageView_Character"
+        app:constraint_referenced_ids="imageView_selectStats_character"
         tools:layout_editor_absoluteY="411dp" />
 
     <Button
-        android:id="@+id/button_HealthAdd"
+        android:id="@+id/button_selectStats_healthAdd"
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -210,11 +210,11 @@
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/button_AttackAdd"
+        app:layout_constraintStart_toStartOf="@+id/button_selectStats_attackAdd"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button_AttackAdd"
+        android:id="@+id/button_selectStats_attackAdd"
         style="@android:style/Widget.Material.Button.Small"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -222,11 +222,11 @@
         android:text="@string/Plus"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/button_CritAdd"
+        app:layout_constraintStart_toStartOf="@+id/button_selectStats_critAdd"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <ProgressBar
-        android:id="@+id/progressBar_pointsAvaliable"
+        android:id="@+id/progressBar_selectStats_pointsAvaliable"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
@@ -234,26 +234,26 @@
         android:layout_marginBottom="4dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toTopOf="@+id/barrier3"
-        app:layout_constraintEnd_toStartOf="@+id/textView_statPointsAvailable"
+        app:layout_constraintEnd_toStartOf="@+id/textView_selectStats_statPointsAvailable"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_statPointsAvailable"
+        android:id="@+id/textView_selectStats_statPointsAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/monster_melee"
         android:text="TextView"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar_pointsAvaliable"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar_selectStats_pointsAvaliable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/progressBar_pointsAvaliable"
-        app:layout_constraintTop_toTopOf="@+id/progressBar_pointsAvaliable" />
+        app:layout_constraintStart_toEndOf="@+id/progressBar_selectStats_pointsAvaliable"
+        app:layout_constraintTop_toTopOf="@+id/progressBar_selectStats_pointsAvaliable" />
 
     <Button
-        android:id="@+id/button_goToEnemyIntro"
+        android:id="@+id/button_selectStats_fight"
         style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -265,14 +265,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button_BackToChacacterSeelct"
+        android:id="@+id/button_selectStats_back"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/monster_melee"
         android:text="@string/Back"
-        app:layout_constraintBottom_toBottomOf="@+id/button_goToEnemyIntro"
+        app:layout_constraintBottom_toBottomOf="@+id/button_selectStats_fight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_goToEnemyIntro" />
+        app:layout_constraintTop_toTopOf="@+id/button_selectStats_fight" />
 </androidx.constraintlayout.widget.ConstraintLayout>

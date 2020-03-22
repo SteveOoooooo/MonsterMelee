@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
@@ -46,7 +43,7 @@ public class SelectStatsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_stats);
 
         this.getWindow().getDecorView().setSystemUiVisibility(
@@ -57,42 +54,35 @@ public class SelectStatsActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
+        backButton = findViewById(R.id.button_selectStats_back);
+        fightButton = findViewById(R.id.button_selectStats_fight);
+        characterImageView = findViewById(R.id.imageView_selectStats_character);
+        characterNameTextView = findViewById(R.id.textView_selectStats_charName);
+        statPointsProgressBar = findViewById(R.id.progressBar_selectStats_pointsAvaliable);
+        statPointsAvailableTextView = findViewById(R.id.textView_selectStats_statPointsAvailable);
+        healthButtonAdd = findViewById(R.id.button_selectStats_healthAdd);
+        attackButtonAdd = findViewById(R.id.button_selectStats_attackAdd);
+        intelligenceButtonAdd = findViewById(R.id.button_selectStats_intelligenceAdd);
+        critButtonAdd = findViewById((R.id.button_selectStats_critAdd));
+        healthProgressBar = findViewById(R.id.progressBar_selectStats_health);
+        attackProgressBar = findViewById(R.id.progressBar_selectStats_attack);
+        intelligenceProgressBar = findViewById(R.id.progressBar_selectStats_intelligence);
+        critProgressBar = findViewById(R.id.progressBar_selectStats_crit);
+
         final Intent intent = getIntent();
         match = intent.getParcelableExtra("Match");
         userCharacter = match.getUserCharacter();
 
         startingStatPoints = userCharacter.getAvailableStatPoints();
 
-        characterImageView = findViewById(R.id.imageView_Character);
         characterImageView.setBackground(getResources().getDrawable(userCharacter.getCharImage(), getTheme()));
-
-        characterNameTextView = findViewById(R.id.textView_Char);
         characterNameTextView.setText(userCharacter.getName());
 
-        statPointsProgressBar = findViewById(R.id.progressBar_pointsAvaliable);
-        statPointsAvailableTextView = findViewById(R.id.textView_statPointsAvailable);
-
-        healthButtonAdd = findViewById(R.id.button_HealthAdd);
-        attackButtonAdd = findViewById(R.id.button_AttackAdd);
-        intelligenceButtonAdd = findViewById(R.id.button_IntelligenceAdd);
-        critButtonAdd = findViewById((R.id.button_CritAdd));
-
-        healthProgressBar = findViewById(R.id.progressBar_Health);
         updateHealth(false);
-
-        attackProgressBar = findViewById(R.id.progressBar_Attack);
         updateAttack(false);
-
-        intelligenceProgressBar = findViewById(R.id.progressBar_Intelligence);
         updateIntelligence(false);
-
-        critProgressBar = findViewById(R.id.progressBar_Crit);
         updateCrit(false);
-
-        backButton = findViewById(R.id.button_BackToChacacterSeelct);
-        fightButton = findViewById(R.id.button_goToEnemyIntro);
         fightButton.setEnabled(false);
-
         updateStatPoints();
 
         healthButtonAdd.setOnClickListener(new View.OnClickListener() {
@@ -101,14 +91,12 @@ public class SelectStatsActivity extends AppCompatActivity {
                 updateHealth(true);
             }
         });
-
         attackButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateAttack(true);
             }
         });
-
         critButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +129,10 @@ public class SelectStatsActivity extends AppCompatActivity {
 
     private void updateStatPoints() {
         int availableStatPoints = userCharacter.getAvailableStatPoints();
-        statPointsProgressBar.setProgress(100 * availableStatPoints / startingStatPoints);
+        if (startingStatPoints > 0)
+            statPointsProgressBar.setProgress(100 * availableStatPoints / startingStatPoints);
+        else
+            statPointsProgressBar.setProgress(0);
         statPointsAvailableTextView.setText(availableStatPoints + " points remaining");
     }
 

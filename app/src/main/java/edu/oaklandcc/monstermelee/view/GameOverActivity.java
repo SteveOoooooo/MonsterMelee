@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,10 +41,10 @@ public class GameOverActivity extends AppCompatActivity {
         Intent intent = getIntent();
         currentMatch = intent.getParcelableExtra("Match");
 
-        userImage = findViewById(R.id.imageView_UserImage);
-        youDiedTextView = findViewById(R.id.textView_YouDied);
-        gameOverTextView = findViewById(R.id.textView_GameOver);
-        homeButton = findViewById(R.id.button_Home);
+        userImage = findViewById(R.id.imageView_gameOver_UserImage);
+        youDiedTextView = findViewById(R.id.textView_gameOver_YouDied);
+        gameOverTextView = findViewById(R.id.textView_gameOver_GameOver);
+        homeButton = findViewById(R.id.button_gameOver_Home);
 
         userImage.setBackground(getResources().getDrawable(
                 currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));

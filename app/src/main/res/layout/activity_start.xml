@@ -8,7 +8,7 @@
     tools:context=".view.StartActivity">
 
     <ImageButton
-        android:id="@+id/button_Start"
+        android:id="@+id/button_start_start"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:background="@drawable/start"

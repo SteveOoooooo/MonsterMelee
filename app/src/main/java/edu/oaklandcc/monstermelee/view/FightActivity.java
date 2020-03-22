@@ -47,14 +47,14 @@ public class FightActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        attackButton = findViewById(R.id.button_Attack);
-        exitButton = findViewById(R.id.imageButton_exit);
+        attackButton = findViewById(R.id.button_fight_attack);
+        exitButton = findViewById(R.id.imageButton_fight_exit);
 
-        userImageView = findViewById(R.id.imageView_userCharacter);
-        enemyImageView = findViewById(R.id.imageView_enemyCharacter);
+        userImageView = findViewById(R.id.imageView_fight_userCharacter);
+        enemyImageView = findViewById(R.id.imageView_fight_enemyCharacter);
 
-        playerProgressBar = findViewById(R.id.progressBar_characterHealth);
-        enemyProgressBar = findViewById(R.id.progressBar_enemyHealth);
+        playerProgressBar = findViewById(R.id.progressBar_fight_userHealth);
+        enemyProgressBar = findViewById(R.id.progressBar_fight_enemyHealth);
 
         Intent intent = getIntent();
 
@@ -96,7 +96,9 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void goToWinScreen(){
-
+        Intent intent = new Intent(this, WonMatchActivity.class);
+        intent.putExtra("Match", currentMatch);
+        startActivity(intent);
     }
 
     private void goToLoseScreen(){

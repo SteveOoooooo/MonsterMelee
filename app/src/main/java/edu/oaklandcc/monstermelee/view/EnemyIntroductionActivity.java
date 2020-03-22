@@ -9,11 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.oaklandcc.monstermelee.R;
-import edu.oaklandcc.monstermelee.model.EnemyCharacter;
 import edu.oaklandcc.monstermelee.model.EnemySequence;
 import edu.oaklandcc.monstermelee.model.Match;
 import edu.oaklandcc.monstermelee.model.UserCharacter;
@@ -40,9 +36,9 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        EnemyImageView = findViewById(R.id.imageView_EnemyImage);
-        EnemyNameTextView = findViewById(R.id.textView_EnemyName);
-        FightButton = findViewById(R.id.button_goToBattle);
+        EnemyImageView = findViewById(R.id.imageView_enemyIntro_enemyImage);
+        EnemyNameTextView = findViewById(R.id.textView_enemyIntro_enemyName);
+        FightButton = findViewById(R.id.button__enemyIntro_fight);
 
         Intent intent = getIntent();
         match = intent.getParcelableExtra("Match");

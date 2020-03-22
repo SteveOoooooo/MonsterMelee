@@ -26,8 +26,8 @@ public class GiveUpActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        yesButton = findViewById(R.id.button_yes);
-        noButton = findViewById(R.id.button_no);
+        yesButton = findViewById(R.id.button_giveUp_yes);
+        noButton = findViewById(R.id.button_giveUp_no);
 
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override

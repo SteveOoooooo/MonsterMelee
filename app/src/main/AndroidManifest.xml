@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.oaklandcc.monstermelee">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,14 +13,13 @@
         <activity android:name=".view.FightActivity" />
         <activity android:name=".view.EnemyIntroductionActivity" />
         <activity android:name=".view.SelectStatsActivity" />
+        <activity android:name=".view.WonMatchActivity" />
         <activity android:name=".view.SelectCharacterActivity" />
         <activity android:name=".view.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

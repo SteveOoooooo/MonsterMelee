@@ -37,8 +37,8 @@
         android:fontFamily="@font/monster_melee"
         android:text="@string/Health"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/button_Character0"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Char0" />
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character0"
+        app:layout_constraintTop_toBottomOf="@+id/textView_selectChar_char0" />
 
     <TextView
         android:id="@+id/textView13"
@@ -52,69 +52,69 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Crit0"
+        android:id="@+id/progressBar_selectChar_crit0"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Attack0"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_attack0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Intelligence0"
+        android:id="@+id/progressBar_selectChar_intelligence0"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character0"
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Attack0"
+        android:id="@+id/progressBar_selectChar_attack0"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Health0"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_health0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <ImageButton
-        android:id="@+id/button_Character1"
+        android:id="@+id/button_selectChar_character1"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_Character2"
+        app:layout_constraintEnd_toStartOf="@+id/button_selectChar_character2"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@+id/button_Character0"
+        app:layout_constraintStart_toEndOf="@+id/button_selectChar_character0"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
-        android:id="@+id/button_Character2"
+        android:id="@+id/button_selectChar_character2"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@+id/button_Character1"
-        app:layout_constraintTop_toTopOf="@+id/button_Character1" />
+        app:layout_constraintStart_toEndOf="@+id/button_selectChar_character1"
+        app:layout_constraintTop_toTopOf="@+id/button_selectChar_character1" />
 
     <ImageButton
-        android:id="@+id/button_Character0"
+        android:id="@+id/button_selectChar_character0"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_Character1"
+        app:layout_constraintEnd_toStartOf="@+id/button_selectChar_character1"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_Character1" />
+        app:layout_constraintTop_toTopOf="@+id/button_selectChar_character1" />
 
     <TextView
         android:id="@+id/textView"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_Char0"
+        android:id="@+id/textView_selectChar_char0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -138,36 +138,36 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character0"
-        app:layout_constraintStart_toStartOf="@+id/button_Character0"
-        app:layout_constraintTop_toBottomOf="@+id/button_Character0" />
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character0"
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character0"
+        app:layout_constraintTop_toBottomOf="@+id/button_selectChar_character0" />
 
     <TextView
-        android:id="@+id/textView_Char1"
+        android:id="@+id/textView_selectChar_char1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/font"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character1"
-        app:layout_constraintStart_toStartOf="@+id/button_Character1"
-        app:layout_constraintTop_toTopOf="@+id/textView_Char0" />
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character1"
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character1"
+        app:layout_constraintTop_toTopOf="@+id/textView_selectChar_char0" />
 
     <TextView
-        android:id="@+id/textView_Char2"
+        android:id="@+id/textView_selectChar_char2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/font"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character2"
-        app:layout_constraintStart_toStartOf="@+id/button_Character2"
-        app:layout_constraintTop_toTopOf="@+id/textView_Char1" />
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character2"
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character2"
+        app:layout_constraintTop_toTopOf="@+id/textView_selectChar_char1" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Health0"
+        android:id="@+id/progressBar_selectChar_health0"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
         android:scaleY="1.5"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character0"
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
@@ -187,7 +187,7 @@
         android:fontFamily="@font/monster_melee"
         android:text="@string/Health"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/button_Character1"
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character1"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
@@ -221,48 +221,48 @@
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Health1"
+        android:id="@+id/progressBar_selectChar_health1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character1"
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character1"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toTopOf="@+id/textView22" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Attack1"
+        android:id="@+id/progressBar_selectChar_attack1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Health1"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Health1"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_health1"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_health1"
         app:layout_constraintTop_toTopOf="@+id/textView23" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Crit1"
+        android:id="@+id/progressBar_selectChar_crit1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Attack1"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Attack1"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_attack1"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_attack1"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Intelligence1"
+        android:id="@+id/progressBar_selectChar_intelligence1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView25"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Crit1"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Crit1"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_crit1"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_crit1"
         app:layout_constraintTop_toTopOf="@+id/textView25" />
 
     <TextView
@@ -272,7 +272,7 @@
         android:fontFamily="@font/monster_melee"
         android:text="@string/Health"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/button_Character2"
+        app:layout_constraintStart_toStartOf="@+id/button_selectChar_character2"
         app:layout_constraintTop_toTopOf="@+id/textView22" />
 
     <TextView
@@ -306,52 +306,52 @@
         app:layout_constraintTop_toTopOf="@+id/textView25" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Health2"
+        android:id="@+id/progressBar_selectChar_health2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView26"
-        app:layout_constraintEnd_toEndOf="@+id/button_Character2"
+        app:layout_constraintEnd_toEndOf="@+id/button_selectChar_character2"
         app:layout_constraintStart_toEndOf="@+id/textView29"
         app:layout_constraintTop_toTopOf="@+id/textView26" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Attack2"
+        android:id="@+id/progressBar_selectChar_attack2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView27"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Health2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Health2"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_health2"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_health2"
         app:layout_constraintTop_toTopOf="@+id/textView27" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Crit2"
+        android:id="@+id/progressBar_selectChar_crit2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView28"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Attack2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Attack2"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_attack2"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_attack2"
         app:layout_constraintTop_toTopOf="@+id/textView28" />
 
     <ProgressBar
-        android:id="@+id/progressBar_Intelligence2"
+        android:id="@+id/progressBar_selectChar_intelligence2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/textView29"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar_Crit2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar_Crit2"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar_selectChar_crit2"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_selectChar_crit2"
         app:layout_constraintTop_toTopOf="@+id/textView29" />
 
     <Button
-        android:id="@+id/button_backToStart"
+        android:id="@+id/button_selectChar_back"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

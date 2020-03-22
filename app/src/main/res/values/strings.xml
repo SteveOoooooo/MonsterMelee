@@ -14,6 +14,8 @@
     <string name="Yes">yes</string>
     <string name="No">No</string>
     <string name="Home">Home</string>
-    <string name="GameOver">Game Over</string>
+    <string name="GameOver">Game Over!</string>
     <string name="YouDied">You Died...</string>
+    <string name="YouWon">You Won!</string>
+    <string name="Continue">Continue</string>
 </resources>

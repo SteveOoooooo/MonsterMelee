@@ -10,7 +10,6 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
     private static final int INTELLIGENCE_POINTS_INCREMENT = 100;
     private static final int INTELLIGENCE_BONUS_XP = 10;
     public static final int EXPERIENCE_POINTS_LIMIT = 1000;
-    private static final int EXPERIENCE_POINTS_BASE_INCREMENT = 100;
     private static final int XP_PER_LEVEL = 100;
     public static final int HEALTH_POINTS_LIMIT = 1000;
     private static final int HEALTH_POINTS_INCREMENT = 100;
@@ -81,15 +80,13 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
         }
     };
 
-    public void awardXP(int experiencePoints) throws Exception {
+    public void awardXP(int experiencePoints) {
 
         if (this.experiencePoints >= EXPERIENCE_POINTS_LIMIT)
-            throw new Exception("Experience points has exceeded limit.");
+            Log.e( "UpgradeError", "Experience points has exceeded limit.");
         else {
-            this.experiencePoints += EXPERIENCE_POINTS_BASE_INCREMENT +
-                    INTELLIGENCE_BONUS_XP * (intelligencePoints / 100);
-            if (experiencePoints > EXPERIENCE_POINTS_LIMIT)
-                this.experiencePoints = EXPERIENCE_POINTS_LIMIT;
+            this.experiencePoints += experiencePoints +
+                    INTELLIGENCE_BONUS_XP * (intelligencePoints / 100D);
         }
         levelCheck();
     }
