@@ -47,11 +47,11 @@ public class EnemySequence implements Parcelable {
         }
     };
 
-    public EnemyCharacter getCurrentEnemy(){
+    EnemyCharacter getCurrentEnemy(){
         return enemies.get(currentEnemyIndex);
     }
 
-    public EnemyCharacter nextEnemy(){
+    EnemyCharacter nextEnemy(){
         EnemyCharacter nextEnemy = null;
         this.currentEnemyIndex++;
         if (currentEnemyIndex < enemies.size())
