@@ -18,4 +18,6 @@
     <string name="YouDied">You Died...</string>
     <string name="YouWon">You Won!</string>
     <string name="Continue">Continue</string>
+    <string name="BeatAllMonsters">Congratulations!\nYou have beat all monsters!</string>
+    <string name="Awesome">You are awesome!</string>
 </resources>

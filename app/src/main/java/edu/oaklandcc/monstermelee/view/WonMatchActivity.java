@@ -77,6 +77,9 @@ public class WonMatchActivity extends AppCompatActivity {
     }
 
     private void goToBeatGameScreen() {
+        Intent selectStatsIntent = new Intent(this, BeatGameActivity.class);
+        selectStatsIntent.putExtra("Match", match);
+        startActivity(selectStatsIntent);
     }
 
     private void goToSelectStatsScreen() {
