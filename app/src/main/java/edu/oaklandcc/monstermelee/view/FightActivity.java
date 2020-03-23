@@ -1,7 +1,6 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
