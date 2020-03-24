@@ -17,8 +17,8 @@ import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
 public class FightActivity extends AppCompatActivity {
-    private static final int animationDuration = 1000;
-    private static final int animationDistance = 325;
+    private static final int ANIMATION_DURATION = 1000;
+    private static final int ANIMATION_DISTANCE = 325;
 
     Match currentMatch;
 
@@ -112,13 +112,13 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + ANIMATION_DISTANCE);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
-        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
+        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - ANIMATION_DISTANCE);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -150,13 +150,13 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - ANIMATION_DISTANCE);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
-        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
+        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + ANIMATION_DISTANCE);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -181,13 +181,13 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
+        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + ANIMATION_DISTANCE);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
-        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
+        final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - ANIMATION_DISTANCE);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -216,13 +216,13 @@ public class FightActivity extends AppCompatActivity {
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
 
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - ANIMATION_DISTANCE);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
-        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
+        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + ANIMATION_DISTANCE);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(playerAnimation).with(enemyAnimation);
@@ -247,9 +247,9 @@ public class FightActivity extends AppCompatActivity {
 
         float enemyStartX = enemyImageView.getX();
 
-        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
+        ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + ANIMATION_DISTANCE);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -272,8 +272,8 @@ public class FightActivity extends AppCompatActivity {
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
         float playerStartX = userImageView.getX();
-        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
-        playerAnimation.setDuration(animationDuration);
+        ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - ANIMATION_DISTANCE);
+        playerAnimation.setDuration(ANIMATION_DURATION);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 
         AnimatorSet animatorSet = new AnimatorSet();

@@ -61,15 +61,15 @@ public class SelectCharacterActivity extends AppCompatActivity {
 
         characterList = new ArrayList<>();
 
-        characterList.add(new UserCharacter("Black", 500,
+        characterList.add(new UserCharacter("Lava", 500,
                 500, 100,
                 R.drawable.blackleft, R.drawable.blackhurtleft, R.drawable.blackattackleft,
                 R.drawable.blackdeadleft, 100));
-        characterList.add(new UserCharacter("Blue", 300,
+        characterList.add(new UserCharacter("Ice", 300,
                 300, 200,
                 R.drawable.blueleft, R.drawable.bluehurtleft, R.drawable.blueattackleft,
                 R.drawable.bluedeadleft, 200));
-        characterList.add(new UserCharacter("Green", 200,
+        characterList.add(new UserCharacter("Earth", 200,
                 200, 500,
                 R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
                 R.drawable.greendeadleft, 300));

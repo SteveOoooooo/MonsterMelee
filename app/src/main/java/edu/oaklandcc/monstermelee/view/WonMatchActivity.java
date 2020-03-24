@@ -17,7 +17,7 @@ import edu.oaklandcc.monstermelee.model.Match;
 
 public class WonMatchActivity extends AppCompatActivity {
 
-    long animationDuration = 1500;
+    long ANIMATION_DURATION = 1500;
 
     Match match;
     ImageView userImage;
@@ -55,10 +55,10 @@ public class WonMatchActivity extends AppCompatActivity {
 
         final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(youWonTextView, View.TRANSLATION_Y, -1000, 0);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator continueButtonAnimation = ObjectAnimator.ofFloat(continueButton, View.ALPHA, 0f, 1f);
-        continueButtonAnimation.setDuration(animationDuration);
+        continueButtonAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(playerAnimation).before(continueButtonAnimation);

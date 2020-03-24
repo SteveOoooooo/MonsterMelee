@@ -16,7 +16,7 @@ import edu.oaklandcc.monstermelee.R;
 
 public class StartActivity extends AppCompatActivity {
 
-    long animationDuration = 1500;
+    long ANIMATION_DURATION = 1500;
 
     ImageButton startButton;
     Button creditButton;
@@ -57,13 +57,13 @@ public class StartActivity extends AppCompatActivity {
 
         final ObjectAnimator logoAnimation = ObjectAnimator.ofFloat(logoImage, View.TRANSLATION_Y, -700, 0);
         logoAnimation.setInterpolator(new BounceInterpolator());
-        logoAnimation.setDuration(animationDuration);
+        logoAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator startButtonAnimation = ObjectAnimator.ofFloat(startButton, View.ALPHA, 0f, 1f);
-        startButtonAnimation.setDuration(animationDuration);
+        startButtonAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator creditButtonAnimation = ObjectAnimator.ofFloat(creditButton, View.ALPHA, 0f, 1f);
-        creditButtonAnimation.setDuration(animationDuration);
+        creditButtonAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(logoAnimation).with(startButtonAnimation);

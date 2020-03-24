@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CreditsActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class CreditsActivity extends AppCompatActivity {
 
     Button homeButton;
     TextView titleText;
-    TextView mainText;
+    LinearLayout textGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,10 @@ public class CreditsActivity extends AppCompatActivity {
 
         homeButton = findViewById(R.id.button_credits_home);
         titleText = findViewById(R.id.textView_credits_title);
-        mainText = findViewById(R.id.textView_credits_mainText);
+        textGroup = findViewById(R.id.linearLayout_credits_textLayout);
 
         homeButton.setAlpha(0.0f);
+        textGroup.setAlpha(0.0f);
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +53,7 @@ public class CreditsActivity extends AppCompatActivity {
         titleAnimation.setInterpolator(new BounceInterpolator());
         titleAnimation.setDuration(ANIMATION_DURATION);
 
-        final ObjectAnimator mainTextAnimation = ObjectAnimator.ofFloat(mainText, View.TRANSLATION_Y, -700, 0);
-        mainTextAnimation.setInterpolator(new BounceInterpolator());
+        final ObjectAnimator mainTextAnimation = ObjectAnimator.ofFloat(textGroup, View.ALPHA, 0f, 1f);
         mainTextAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator homeButtonAnimation = ObjectAnimator.ofFloat(homeButton, View.ALPHA, 0f, 1f);

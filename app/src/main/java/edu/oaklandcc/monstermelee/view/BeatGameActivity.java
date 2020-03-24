@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class BeatGameActivity extends AppCompatActivity {
 
-    long animationDuration = 1500;
+    long ANIMATION_DURATION = 1500;
 
     Match currentMatch;
 
@@ -55,13 +55,13 @@ public class BeatGameActivity extends AppCompatActivity {
 
         final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(beatAllMonstersTextView, View.TRANSLATION_Y,  -1000, 0);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator gameOverAnimation = ObjectAnimator.ofFloat(youAreAwesomeTextView, View.ALPHA, 0f, 1f);
-        gameOverAnimation.setDuration(animationDuration);
+        gameOverAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator homeButtonAnimation = ObjectAnimator.ofFloat(homeButton, View.ALPHA, 0f, 1f);
-        homeButtonAnimation.setDuration(animationDuration);
+        homeButtonAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(playerAnimation).before(gameOverAnimation);
