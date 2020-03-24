@@ -126,6 +126,7 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                // add sound
 
                 currentMatch.userAttack();
                 updateHealthProgressBar();
@@ -164,6 +165,7 @@ public class FightActivity extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 attackStep3();
+                // add sound
             }
         });
 
@@ -204,6 +206,7 @@ public class FightActivity extends AppCompatActivity {
 
         animatorSet.play(playerAnimation).with(enemyAnimation);
         animatorSet.start();
+        //add sound
     }
 
     private void attackStep4() {
@@ -232,6 +235,8 @@ public class FightActivity extends AppCompatActivity {
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 attackButton.setEnabled(true);
+
+                //add sound
             }
         });
     }
@@ -254,6 +259,8 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 goToLoseScreen();
+
+                //add sound
             }
         });
         animatorSet.play(enemyAnimation);
@@ -277,6 +284,7 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 goToWinScreen();
+                //add sound
             }
         });
         animatorSet.play(playerAnimation);
