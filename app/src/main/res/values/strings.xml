@@ -20,4 +20,5 @@
     <string name="Continue">Continue</string>
     <string name="BeatAllMonsters">Congratulations!\nYou have beat all monsters!</string>
     <string name="Awesome">You are awesome!</string>
+    <string name="Credits">Credits</string>
 </resources>
