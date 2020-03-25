@@ -8,11 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@transition/slide_in_below</item>
-        <item name="android:activityOpenExitAnimation">@transition/slide_out_above</item>
-        <item name="android:activityCloseEnterAnimation">@transition/slide_in_above</item>
-        <item name="android:activityCloseExitAnimation">@transition/slide_out_below</item>
-    </style>
-
 </resources>
