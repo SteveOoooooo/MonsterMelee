@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import edu.oaklandcc.monstermelee.R;
-
+import edu.oaklandcc.monstermelee.utility.UI;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -27,13 +27,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_start);
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.hideSystemUI(this);
 
         startButton = findViewById(R.id.button_start_start);
         logoImage = findViewById(R.id.imageView_start_logo);
@@ -74,10 +68,12 @@ public class StartActivity extends AppCompatActivity {
     private void startGame() {
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 
     private void showCredits() {
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
+        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
     }
 }

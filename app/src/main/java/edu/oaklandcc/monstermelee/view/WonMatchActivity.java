@@ -2,6 +2,7 @@ package edu.oaklandcc.monstermelee.view;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +10,8 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import edu.oaklandcc.monstermelee.utility.UI;
 import androidx.appcompat.app.AppCompatActivity;
-
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
@@ -29,14 +29,7 @@ public class WonMatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won_match);
-
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.hideSystemUI(this);
 
         Intent intent = getIntent();
         match = intent.getParcelableExtra("Match");
@@ -80,12 +73,13 @@ public class WonMatchActivity extends AppCompatActivity {
         Intent selectStatsIntent = new Intent(this, BeatGameActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 
     private void goToSelectStatsScreen() {
-
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 }

@@ -1,12 +1,13 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import edu.oaklandcc.monstermelee.utility.UI;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import edu.oaklandcc.monstermelee.R;
 
 public class GiveUpActivity extends AppCompatActivity {
@@ -18,13 +19,7 @@ public class GiveUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_up);
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.hideSystemUI(this);
 
         yesButton = findViewById(R.id.button_giveUp_yes);
         noButton = findViewById(R.id.button_giveUp_no);
@@ -46,10 +41,12 @@ public class GiveUpActivity extends AppCompatActivity {
 
     private void goBackToFight() {
         this.finish();
+        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
     }
 
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 }

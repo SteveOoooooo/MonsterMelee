@@ -2,13 +2,14 @@ package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import edu.oaklandcc.monstermelee.utility.UI;
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.EnemySequence;
 import edu.oaklandcc.monstermelee.model.Match;
@@ -28,13 +29,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enemy_introduction);
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.hideSystemUI(this);
 
         EnemyImageView = findViewById(R.id.imageView_enemyIntro_enemyImage);
         EnemyNameTextView = findViewById(R.id.textView_enemyIntro_enemyName);
@@ -58,5 +53,6 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FightActivity.class);
         intent.putExtra("Match", match);
         startActivity(intent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 }

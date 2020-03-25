@@ -5,6 +5,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
+import edu.oaklandcc.monstermelee.utility.UI;
 
 public class FightActivity extends AppCompatActivity {
     private static final int ANIMATION_DURATION = 1000;
@@ -33,14 +35,7 @@ public class FightActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
-
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.hideSystemUI(this);
 
         attackButton = findViewById(R.id.button_fight_attack);
         exitButton = findViewById(R.id.imageButton_fight_exit);
@@ -82,6 +77,7 @@ public class FightActivity extends AppCompatActivity {
     private void goToGiveUpScreen() {
         Intent intent = new Intent(this, GiveUpActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
     }
 
     private void updateHealthProgressBar() {

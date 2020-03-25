@@ -62,6 +62,10 @@ public class Match implements Parcelable {
         return enemySequence.nextEnemy();
     }
 
+    public boolean isFirstEnemy(){
+        return (enemySequence.getCurrentEnemyIndex() == 0);
+    }
+
     @Override
     public int describeContents() {
         return 0;
