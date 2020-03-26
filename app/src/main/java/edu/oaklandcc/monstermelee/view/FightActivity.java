@@ -30,8 +30,10 @@ public class FightActivity extends AppCompatActivity {
     ImageButton exitButton;
     ImageView userImageView;
     ImageView enemyImageView;
-    ProgressBar playerProgressBar;
+    ProgressBar userProgressBar;
     ProgressBar enemyProgressBar;
+
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class FightActivity extends AppCompatActivity {
         userImageView = findViewById(R.id.imageView_fight_userCharacter);
         enemyImageView = findViewById(R.id.imageView_fight_enemyCharacter);
 
-        playerProgressBar = findViewById(R.id.progressBar_fight_userHealth);
+        userProgressBar = findViewById(R.id.progressBar_fight_userHealth);
         enemyProgressBar = findViewById(R.id.progressBar_fight_enemyHealth);
 
         Intent intent = getIntent();
@@ -83,6 +85,7 @@ public class FightActivity extends AppCompatActivity {
         attackButton.startAnimation(viewAlphaIncrease);
         exitButton.startAnimation(viewAlphaIncrease);
 
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
     }
 
     private void goToGiveUpScreen() {
@@ -94,7 +97,7 @@ public class FightActivity extends AppCompatActivity {
     private void updateHealthProgressBar() {
         enemyProgressBar.setProgress(100 * currentMatch.getEnemyCharacter().getCurrentHealthPoints()
                 / currentMatch.getEnemyCharacter().getMaxHealthPoints());
-        playerProgressBar.setProgress(100 * currentMatch.getUserCharacter().getCurrentHealthPoints()
+        userProgressBar.setProgress(100 * currentMatch.getUserCharacter().getCurrentHealthPoints()
                 / currentMatch.getUserCharacter().getMaxHealthPoints());
     }
 
@@ -138,6 +141,7 @@ public class FightActivity extends AppCompatActivity {
 
                 currentMatch.userAttack();
                 updateHealthProgressBar();
+                enemyProgressBar.startAnimation(viewJiggle);
 
                 if (currentMatch.enemyIsDead())
                     enemyDead();
@@ -205,6 +209,7 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 currentMatch.enemyAttack();
                 updateHealthProgressBar();
+                userProgressBar.startAnimation(viewJiggle);
                 if (currentMatch.userIsDead())
                     userDead();
                 else
@@ -243,7 +248,6 @@ public class FightActivity extends AppCompatActivity {
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 attackButton.setEnabled(true);
-
                 //add sound
             }
         });

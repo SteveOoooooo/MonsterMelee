@@ -43,12 +43,20 @@ public class SelectStatsActivity extends AppCompatActivity {
     Button backButton;
     Button fightButton;
 
+    Animation viewBounce;
+    Animation viewAlphaIncrease;
+    Animation viewJiggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_stats);
         UI.immersiveLandscape(this);
+
+        viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         titleText = findViewById(R.id.textView_selectStats_title);
         backButton = findViewById(R.id.button_selectStats_back);
@@ -125,16 +133,12 @@ public class SelectStatsActivity extends AppCompatActivity {
             }
         });
 
-        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
-        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
-
         titleText.startAnimation(viewBounce);
         characterImageView.startAnimation(viewBounce);
 
         fightButton.startAnimation(viewAlphaIncrease);
         backButton.startAnimation(viewAlphaIncrease);
         characterNameTextView.startAnimation(viewAlphaIncrease);
-
     }
 
     private void updateStatPoints() {
@@ -143,6 +147,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             statPointsProgressBar.setProgress(100 * availableStatPoints / startingStatPoints);
         else
             statPointsProgressBar.setProgress(0);
+        statPointsProgressBar.startAnimation(viewJiggle);
         statPointsAvailableTextView.setText(availableStatPoints + " points remaining");
     }
 
@@ -151,6 +156,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         healthProgressBar.setProgress(100 * userCharacter.getMaxHealthPoints() / userCharacter.HEALTH_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
+        healthProgressBar.startAnimation(viewJiggle);
     }
 
     private void updateAttack(boolean upgrade) {
@@ -158,6 +164,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         attackProgressBar.setProgress(100 * userCharacter.getAttackPoints() / UserCharacter.ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
+        attackProgressBar.startAnimation(viewJiggle);
     }
 
     private void updateCrit(boolean upgrade) {
@@ -165,6 +172,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         critProgressBar.setProgress(100 * userCharacter.getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
+        critProgressBar.startAnimation(viewJiggle);
     }
 
     private void updateIntelligence(boolean upgrade) {
@@ -172,6 +180,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         intelligenceProgressBar.setProgress(100 * userCharacter.getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
+        intelligenceProgressBar.startAnimation(viewJiggle);
     }
 
     private void updateButtonEnabled() {
@@ -183,8 +192,10 @@ public class SelectStatsActivity extends AppCompatActivity {
             critButtonAdd.setEnabled(false);
         if (userCharacter.getIntelligencePoints() >= UserCharacter.INTELLIGENCE_POINTS_LIMIT || userCharacter.getAvailableStatPoints() <= 0)
             intelligenceButtonAdd.setEnabled(false);
-        if (userCharacter.getAvailableStatPoints() == 0)
+        if (userCharacter.getAvailableStatPoints() == 0) {
             fightButton.setEnabled(true);
+            fightButton.startAnimation(viewJiggle);
+        }
     }
 
     private void goBackToCharacterSelect(){
