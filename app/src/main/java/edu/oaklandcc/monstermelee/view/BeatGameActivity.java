@@ -26,7 +26,7 @@ public class BeatGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beat_game);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         beatAllMonstersTextView = findViewById(R.id.textView_beatGame_beatAllMonsters);
         youAreAwesomeTextView = findViewById(R.id.textView_beatGame_awesome);

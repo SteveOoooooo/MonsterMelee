@@ -44,7 +44,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_stats);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         backButton = findViewById(R.id.button_selectStats_back);
         fightButton = findViewById(R.id.button_selectStats_fight);

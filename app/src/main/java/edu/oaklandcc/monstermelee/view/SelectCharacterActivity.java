@@ -49,7 +49,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_character);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         characterList = new ArrayList<>();
         characterList.add(new UserCharacter("Lava", 500,

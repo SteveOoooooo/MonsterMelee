@@ -3,7 +3,6 @@ package edu.oaklandcc.monstermelee.view;
 import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.utility.UI;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +18,7 @@ public class GiveUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_up);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         yesButton = findViewById(R.id.button_giveUp_yes);
         noButton = findViewById(R.id.button_giveUp_no);

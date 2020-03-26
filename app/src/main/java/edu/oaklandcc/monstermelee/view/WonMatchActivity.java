@@ -25,7 +25,7 @@ public class WonMatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won_match);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         Intent intent = getIntent();
         match = intent.getParcelableExtra("Match");

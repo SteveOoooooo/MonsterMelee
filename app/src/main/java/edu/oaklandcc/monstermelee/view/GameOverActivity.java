@@ -25,7 +25,7 @@ public class GameOverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         Intent intent = getIntent();
         currentMatch = intent.getParcelableExtra("Match");

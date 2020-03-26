@@ -26,7 +26,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enemy_introduction);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         enemyImageView = findViewById(R.id.imageView_enemyIntro_enemyImage);
         enemyNameTextView = findViewById(R.id.textView_enemyIntro_enemyName);

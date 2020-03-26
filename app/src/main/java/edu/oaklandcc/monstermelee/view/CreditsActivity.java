@@ -24,7 +24,7 @@ public class CreditsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         homeButton = findViewById(R.id.button_credits_home);
         titleText = findViewById(R.id.textView_credits_title);

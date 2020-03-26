@@ -1,15 +1,13 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,7 +27,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_start);
-        UI.hideSystemUI(this);
+        UI.immersiveLandscape(this);
 
         startButton = findViewById(R.id.button_start_start);
         logoImage = findViewById(R.id.imageView_start_logo);
