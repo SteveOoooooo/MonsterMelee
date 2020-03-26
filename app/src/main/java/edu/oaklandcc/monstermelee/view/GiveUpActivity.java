@@ -41,12 +41,12 @@ public class GiveUpActivity extends AppCompatActivity {
 
     private void goBackToFight() {
         this.finish();
-        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 }

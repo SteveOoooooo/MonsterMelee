@@ -14,11 +14,11 @@
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView_enemyIntro_prepareToBattle"
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView_enemyIntro_prepareToBattle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

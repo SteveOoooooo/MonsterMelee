@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -46,34 +48,22 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        startButton.setAlpha(0f);
-        creditButton.setAlpha(0f);
-
-        final ObjectAnimator logoAnimation = ObjectAnimator.ofFloat(logoImage, View.TRANSLATION_Y, -700, 0);
-        logoAnimation.setInterpolator(new BounceInterpolator());
-        logoAnimation.setDuration(ANIMATION_DURATION);
-
-        final ObjectAnimator startButtonAnimation = ObjectAnimator.ofFloat(startButton, View.ALPHA, 0f, 1f);
-        startButtonAnimation.setDuration(ANIMATION_DURATION);
-
-        final ObjectAnimator creditButtonAnimation = ObjectAnimator.ofFloat(creditButton, View.ALPHA, 0f, 1f);
-        creditButtonAnimation.setDuration(ANIMATION_DURATION);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(logoAnimation).with(startButtonAnimation);
-        animatorSet.play(startButtonAnimation).with(creditButtonAnimation);
-        animatorSet.start();
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+        logoImage.startAnimation(viewBounce);
+        startButton.startAnimation(viewAlphaIncrease);
+        creditButton.startAnimation(viewAlphaIncrease);
     }
 
     private void startGame() {
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
     private void showCredits() {
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
-        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 }

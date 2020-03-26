@@ -1,12 +1,10 @@
 package edu.oaklandcc.monstermelee.view;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,8 +14,6 @@ import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
 public class WonMatchActivity extends AppCompatActivity {
-
-    long ANIMATION_DURATION = 1500;
 
     Match match;
     ImageView userImage;
@@ -44,18 +40,11 @@ public class WonMatchActivity extends AppCompatActivity {
         enemyImage.setBackground(getResources().getDrawable(
                 match.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
-        continueButton.setAlpha(0);
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(youWonTextView, View.TRANSLATION_Y, -1000, 0);
-        playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(ANIMATION_DURATION);
-
-        final ObjectAnimator continueButtonAnimation = ObjectAnimator.ofFloat(continueButton, View.ALPHA, 0f, 1f);
-        continueButtonAnimation.setDuration(ANIMATION_DURATION);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(playerAnimation).before(continueButtonAnimation);
-        animatorSet.start();
+        youWonTextView.startAnimation(viewBounce);
+        continueButton.startAnimation(viewAlphaIncrease);
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +62,13 @@ public class WonMatchActivity extends AppCompatActivity {
         Intent selectStatsIntent = new Intent(this, BeatGameActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
     private void goToSelectStatsScreen() {
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 }

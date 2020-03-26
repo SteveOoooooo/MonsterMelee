@@ -2,8 +2,6 @@ package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.utility.UI;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -140,7 +138,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
     private void goBackToStart() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
     private void characterSelected(UserCharacter selectedCharacter) {
@@ -150,6 +148,6 @@ public class SelectCharacterActivity extends AppCompatActivity {
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 }

@@ -77,7 +77,7 @@ public class FightActivity extends AppCompatActivity {
     private void goToGiveUpScreen() {
         Intent intent = new Intent(this, GiveUpActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
     private void updateHealthProgressBar() {

@@ -2,22 +2,18 @@ package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.R;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import edu.oaklandcc.monstermelee.utility.UI;
 
 public class CreditsActivity extends AppCompatActivity {
-
-    long ANIMATION_DURATION = 1500;
 
     Button homeButton;
     TextView titleText;
@@ -34,8 +30,12 @@ public class CreditsActivity extends AppCompatActivity {
         titleText = findViewById(R.id.textView_credits_title);
         textGroup = findViewById(R.id.linearLayout_credits_textLayout);
 
-        homeButton.setAlpha(0.0f);
-        textGroup.setAlpha(0.0f);
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        titleText.startAnimation(viewBounce);
+        homeButton.startAnimation(viewAlphaIncrease);
+        textGroup.startAnimation(viewAlphaIncrease);
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,26 +43,11 @@ public class CreditsActivity extends AppCompatActivity {
                 goToHomeScreen();
             }
         });
-
-        final ObjectAnimator titleAnimation = ObjectAnimator.ofFloat(titleText, View.TRANSLATION_Y, -1000, 0);
-        titleAnimation.setInterpolator(new BounceInterpolator());
-        titleAnimation.setDuration(ANIMATION_DURATION);
-
-        final ObjectAnimator mainTextAnimation = ObjectAnimator.ofFloat(textGroup, View.ALPHA, 0f, 1f);
-        mainTextAnimation.setDuration(ANIMATION_DURATION);
-
-        final ObjectAnimator homeButtonAnimation = ObjectAnimator.ofFloat(homeButton, View.ALPHA, 0f, 1f);
-        homeButtonAnimation.setDuration(ANIMATION_DURATION);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(titleAnimation).with(mainTextAnimation);
-        animatorSet.play(titleAnimation).with(homeButtonAnimation);
-        animatorSet.start();
     }
 
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 }

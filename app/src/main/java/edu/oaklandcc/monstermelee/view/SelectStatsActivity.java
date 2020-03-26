@@ -2,8 +2,6 @@ package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.utility.UI;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -142,21 +140,21 @@ public class SelectStatsActivity extends AppCompatActivity {
 
     private void updateAttack(boolean upgrade) {
         if (upgrade) userCharacter.upgradeAttack();
-        attackProgressBar.setProgress(100 * userCharacter.getAttackPoints() / userCharacter.ATTACK_POINTS_LIMIT);
+        attackProgressBar.setProgress(100 * userCharacter.getAttackPoints() / UserCharacter.ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
     private void updateCrit(boolean upgrade) {
         if (upgrade) userCharacter.upgradeCrit();
-        critProgressBar.setProgress(100 * userCharacter.getCriticalHitPoints() / userCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
+        critProgressBar.setProgress(100 * userCharacter.getCriticalHitPoints() / UserCharacter.CRITICAL_ATTACK_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
 
     private void updateIntelligence(boolean upgrade) {
         if (upgrade) userCharacter.upgradeIntelligence();
-        intelligenceProgressBar.setProgress(100 * userCharacter.getIntelligencePoints() / userCharacter.INTELLIGENCE_POINTS_LIMIT);
+        intelligenceProgressBar.setProgress(100 * userCharacter.getIntelligencePoints() / UserCharacter.INTELLIGENCE_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
     }
@@ -177,13 +175,13 @@ public class SelectStatsActivity extends AppCompatActivity {
     private void goBackToCharacterSelect(){
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
-        overridePendingTransition(R.transition.slide_in_above, R.transition.slide_out_below);
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
     private void goToEnemyIntro(){
         Intent intent = new Intent(this, EnemyIntroductionActivity.class);
         intent.putExtra("Match", match);
         startActivity(intent);
-        overridePendingTransition(R.transition.slide_in_below, R.transition.slide_out_above);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 }
