@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -65,13 +67,21 @@ public class FightActivity extends AppCompatActivity {
                 goToGiveUpScreen();
             }
         });
-
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 attackStep1();
             }
         });
+
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        enemyImageView.startAnimation(viewBounce);
+        userImageView.startAnimation(viewBounce);
+
+        attackButton.startAnimation(viewAlphaIncrease);
+        exitButton.startAnimation(viewAlphaIncrease);
 
     }
 

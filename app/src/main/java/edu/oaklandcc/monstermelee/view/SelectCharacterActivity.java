@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -42,6 +44,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
     ProgressBar critBar2;
     ProgressBar intelligenceBar2;
 
+    TextView titleText;
     Button backButton;
 
     @Override
@@ -64,6 +67,8 @@ public class SelectCharacterActivity extends AppCompatActivity {
                 200, 500,
                 R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
                 R.drawable.greendeadleft, 300));
+
+        titleText = findViewById(R.id.textView_selectChar_title);
 
         textView0 = findViewById(R.id.textView_selectChar_char0);
         textView0.setText(characterList.get(0).getName());
@@ -133,6 +138,19 @@ public class SelectCharacterActivity extends AppCompatActivity {
                 goBackToStart();
             }
         });
+
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        button0.startAnimation(viewBounce);
+        button1.startAnimation(viewBounce);
+        button2.startAnimation(viewBounce);
+        titleText.startAnimation(viewBounce);
+
+        backButton.startAnimation(viewAlphaIncrease);
+        textView0.startAnimation(viewAlphaIncrease);
+        textView1.startAnimation(viewAlphaIncrease);
+        textView2.startAnimation(viewAlphaIncrease);
     }
 
     private void goBackToStart() {

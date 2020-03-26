@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView_selectStats_character" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView_selectStats_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -182,7 +182,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView_selectStats_title"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.Barrier

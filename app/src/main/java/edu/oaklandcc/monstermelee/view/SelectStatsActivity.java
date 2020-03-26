@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,6 +17,8 @@ import edu.oaklandcc.monstermelee.model.Match;
 import edu.oaklandcc.monstermelee.model.UserCharacter;
 
 public class SelectStatsActivity extends AppCompatActivity {
+
+    TextView titleText;
 
     Button healthButtonAdd;
     Button attackButtonAdd;
@@ -46,6 +50,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_stats);
         UI.immersiveLandscape(this);
 
+        titleText = findViewById(R.id.textView_selectStats_title);
         backButton = findViewById(R.id.button_selectStats_back);
         fightButton = findViewById(R.id.button_selectStats_fight);
         characterImageView = findViewById(R.id.imageView_selectStats_character);
@@ -119,6 +124,16 @@ public class SelectStatsActivity extends AppCompatActivity {
                 goToEnemyIntro();
             }
         });
+
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        titleText.startAnimation(viewBounce);
+        characterImageView.startAnimation(viewBounce);
+
+        fightButton.startAnimation(viewAlphaIncrease);
+        backButton.startAnimation(viewAlphaIncrease);
+        characterNameTextView.startAnimation(viewAlphaIncrease);
 
     }
 
