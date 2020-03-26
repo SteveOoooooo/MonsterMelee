@@ -5,6 +5,7 @@ import edu.oaklandcc.monstermelee.utility.UI;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -115,6 +116,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(0));
+                button0.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 
@@ -122,6 +124,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(1));
+                button1.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 
@@ -129,6 +132,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(2));
+                button2.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 

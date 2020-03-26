@@ -5,7 +5,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -21,7 +23,6 @@ import edu.oaklandcc.monstermelee.utility.UI;
 
 public class FightActivity extends AppCompatActivity {
     private static final int ANIMATION_DURATION = 1000;
-
     float animationDistance;
 
     Match currentMatch;
@@ -34,12 +35,14 @@ public class FightActivity extends AppCompatActivity {
     ProgressBar enemyProgressBar;
 
     Animation viewJiggle;
+    Activity currentAtivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
         UI.immersiveLandscape(this);
+        currentAtivity = this;
 
         attackButton = findViewById(R.id.button_fight_attack);
         exitButton = findViewById(R.id.imageButton_fight_exit);
@@ -142,6 +145,7 @@ public class FightActivity extends AppCompatActivity {
                 currentMatch.userAttack();
                 updateHealthProgressBar();
                 enemyProgressBar.startAnimation(viewJiggle);
+                UI.vibrate(currentAtivity);
 
                 if (currentMatch.enemyIsDead())
                     enemyDead();
@@ -210,6 +214,7 @@ public class FightActivity extends AppCompatActivity {
                 currentMatch.enemyAttack();
                 updateHealthProgressBar();
                 userProgressBar.startAnimation(viewJiggle);
+                UI.vibrate(currentAtivity);
                 if (currentMatch.userIsDead())
                     userDead();
                 else
@@ -254,6 +259,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void userDead() {
+        userProgressBar.startAnimation(viewJiggle);
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
@@ -280,6 +286,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void enemyDead() {
+        enemyProgressBar.startAnimation(viewJiggle);
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
