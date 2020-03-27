@@ -160,7 +160,7 @@ public class SelectStatsActivity extends AppCompatActivity {
 
     private void updateHealth(boolean upgrade) {
         if (upgrade) userCharacter.upgradeMaxHealth();
-        healthProgressBar.setProgress(100 * userCharacter.getMaxHealthPoints() / userCharacter.HEALTH_POINTS_LIMIT);
+        healthProgressBar.setProgress(100 * userCharacter.getMaxHealthPoints() / UserCharacter.HEALTH_POINTS_LIMIT);
         updateButtonEnabled();
         updateStatPoints();
         healthProgressBar.startAnimation(viewJiggle);
