@@ -5,6 +5,7 @@ import edu.oaklandcc.monstermelee.utility.UI;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -96,18 +97,21 @@ public class SelectStatsActivity extends AppCompatActivity {
         healthButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                healthButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 updateHealth(true);
             }
         });
         attackButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attackButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 updateAttack(true);
             }
         });
         critButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                critButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 updateCrit(true);
             }
         });
@@ -115,6 +119,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         intelligenceButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intelligenceButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 updateIntelligence(true);
             }
         });
@@ -122,6 +127,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goBackToCharacterSelect();
             }
         });
@@ -129,6 +135,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         fightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goToEnemyIntro();
             }
         });

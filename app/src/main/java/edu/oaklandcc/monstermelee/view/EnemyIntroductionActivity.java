@@ -3,6 +3,7 @@ package edu.oaklandcc.monstermelee.view;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -50,6 +51,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
         fightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fightButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 startFight();
             }
         });

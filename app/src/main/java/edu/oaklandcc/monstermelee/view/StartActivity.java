@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -36,12 +37,15 @@ public class StartActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 startGame();
             }
         });
+
         creditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                creditButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 showCredits();
             }
         });
@@ -54,12 +58,14 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
     private void showCredits() {
+
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);

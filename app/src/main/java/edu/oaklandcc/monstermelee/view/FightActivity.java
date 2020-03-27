@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
@@ -69,12 +70,14 @@ public class FightActivity extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                exitButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goToGiveUpScreen();
             }
         });
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attackButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 attackStep1();
             }
         });

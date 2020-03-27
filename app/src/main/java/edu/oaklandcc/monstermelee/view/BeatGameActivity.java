@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
+
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -49,6 +51,7 @@ public class BeatGameActivity extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goToHomeScreen();
             }
         });

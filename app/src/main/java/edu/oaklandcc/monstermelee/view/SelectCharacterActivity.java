@@ -140,6 +140,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 goBackToStart();
+                backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 

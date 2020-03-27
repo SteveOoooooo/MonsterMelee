@@ -2,6 +2,7 @@ package edu.oaklandcc.monstermelee.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -49,6 +50,7 @@ public class WonMatchActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                continueButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 match.getUserCharacter().awardXP(match.getEnemyCharacter().getXpReward());
                 if (match.nextMatch() == null)
                     goToBeatGameScreen();

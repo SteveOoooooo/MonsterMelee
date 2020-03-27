@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.utility.UI;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -48,6 +49,7 @@ public class GameOverActivity extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goToHomeScreen();
             }
         });

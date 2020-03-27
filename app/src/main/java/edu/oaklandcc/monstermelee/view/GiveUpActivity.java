@@ -5,6 +5,7 @@ import edu.oaklandcc.monstermelee.utility.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import edu.oaklandcc.monstermelee.R;
@@ -26,6 +27,7 @@ public class GiveUpActivity extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yesButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goToHomeScreen();
             }
         });
@@ -33,6 +35,7 @@ public class GiveUpActivity extends AppCompatActivity {
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                noButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 goBackToFight();
             }
         });
