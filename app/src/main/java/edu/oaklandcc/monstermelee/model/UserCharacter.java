@@ -22,14 +22,14 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
             return new UserCharacter[size];
         }
     };
-    private static final int INTELLIGENCE_POINTS_INCREMENT = 100;
-    private static final int INTELLIGENCE_BONUS_XP = 10;
-    private static final int XP_PER_LEVEL = 100;
-    private static final int HEALTH_POINTS_INCREMENT = 100;
-    private static final int ATTACK_POINTS_INCREMENT = 100;
-    private static final int CRITICAL_ATTACK_POINTS_INCREMENT = 100;
-    private static final int STARTING_STAT_POINTS = 2;
-    private static final int STAT_POINTS_PER_LEVEL = 1;
+    public static final int INTELLIGENCE_POINTS_INCREMENT = 100;
+    public static final int INTELLIGENCE_BONUS_XP = 10;
+    public static final int XP_PER_LEVEL = 100;
+    public static final int HEALTH_POINTS_INCREMENT = 100;
+    public static final int ATTACK_POINTS_INCREMENT = 100;
+    public static final int CRITICAL_ATTACK_POINTS_INCREMENT = 100;
+    public static final int STARTING_STAT_POINTS = 2;
+    public static final int STAT_POINTS_PER_LEVEL = 1;
     private int intelligencePoints;
     private int experiencePoints;
     private int level;
