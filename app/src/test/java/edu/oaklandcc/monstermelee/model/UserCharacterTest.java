@@ -80,6 +80,23 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testCalculateHit() {
+        //SETUP
+        int startAttack = 100;
+        int startCrit = 100;
+        int actualOutput;
+        int expectedOutputNoCrit = startAttack;
+        int expectedOutputWithCrit = startAttack + startCrit;
+
+        UserCharacter testCharacter = new UserCharacter("Dummy", 500,
+                startAttack, startCrit, R.drawable.blackleft, R.drawable.blackhurtleft,
+                R.drawable.blackattackleft, R.drawable.blackdeadleft, 100);
+
+        //EXECUTE
+        actualOutput = testCharacter.calculateHit();
+
+        //ASSERT
+        assertTrue(actualOutput == expectedOutputNoCrit ||
+                actualOutput == expectedOutputWithCrit);
     }
 
     public void testTestGetName() {
@@ -152,6 +169,20 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetCharImage() {
+        //SETUP
+        int charImage = 123;
+        int actualOutput;
+        int expectedOutput = charImage;
+
+        UserCharacter testCharacter = new UserCharacter("Dummy", 100,
+                100, 100, charImage, R.drawable.blackhurtleft,
+                R.drawable.blackattackleft, R.drawable.blackdeadleft, 100);
+
+        //EXECUTE
+        actualOutput = testCharacter.getCharImage();
+
+        //ASSERT
+        assertEquals(expectedOutput, actualOutput);
     }
 
     public void testGetAttackPoints() {
