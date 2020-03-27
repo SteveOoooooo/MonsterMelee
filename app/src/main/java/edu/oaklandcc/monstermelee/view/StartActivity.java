@@ -17,11 +17,11 @@ import edu.oaklandcc.monstermelee.utility.UI;
 
 public class StartActivity extends AppCompatActivity {
 
-    long ANIMATION_DURATION = 1500;
-
     ImageButton startButton;
     Button creditButton;
     ImageView logoImage;
+    Animation viewJiggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class StartActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_start);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         startButton = findViewById(R.id.button_start_start);
         logoImage = findViewById(R.id.imageView_start_logo);
@@ -38,6 +40,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                startButton.startAnimation(viewJiggle);
                 startGame();
             }
         });
@@ -46,6 +49,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 creditButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                creditButton.startAnimation(viewJiggle);
                 showCredits();
             }
         });
@@ -69,5 +73,12 @@ public class StartActivity extends AppCompatActivity {
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

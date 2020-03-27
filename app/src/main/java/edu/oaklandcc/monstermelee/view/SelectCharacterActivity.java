@@ -48,12 +48,16 @@ public class SelectCharacterActivity extends AppCompatActivity {
     TextView titleText;
     Button backButton;
 
+    Animation viewJiggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_character);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         characterList = new ArrayList<>();
         characterList.add(new UserCharacter("Lava", 500,
@@ -116,6 +120,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(0));
+                button0.startAnimation(viewJiggle);
                 button0.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
@@ -124,6 +129,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(1));
+                button1.startAnimation(viewJiggle);
                 button1.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
@@ -132,6 +138,7 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(2));
+                button2.startAnimation(viewJiggle);
                 button2.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
@@ -139,8 +146,9 @@ public class SelectCharacterActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goBackToStart();
                 backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                backButton.startAnimation(viewJiggle);
+                goBackToStart();
             }
         });
 
@@ -172,5 +180,12 @@ public class SelectCharacterActivity extends AppCompatActivity {
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

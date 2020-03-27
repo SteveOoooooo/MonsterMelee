@@ -21,12 +21,15 @@ public class WonMatchActivity extends AppCompatActivity {
     ImageView enemyImage;
     TextView youWonTextView;
     Button continueButton;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won_match);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         Intent intent = getIntent();
         match = intent.getParcelableExtra("Match");
@@ -51,6 +54,7 @@ public class WonMatchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 continueButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                continueButton.startAnimation(viewJiggle);
                 match.getUserCharacter().awardXP(match.getEnemyCharacter().getXpReward());
                 if (match.nextMatch() == null)
                     goToBeatGameScreen();
@@ -72,5 +76,12 @@ public class WonMatchActivity extends AppCompatActivity {
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

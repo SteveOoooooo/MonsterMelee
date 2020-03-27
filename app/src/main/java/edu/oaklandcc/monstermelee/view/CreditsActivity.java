@@ -19,6 +19,7 @@ public class CreditsActivity extends AppCompatActivity {
     Button homeButton;
     TextView titleText;
     LinearLayout textGroup;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class CreditsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_credits);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         homeButton = findViewById(R.id.button_credits_home);
         titleText = findViewById(R.id.textView_credits_title);
@@ -42,6 +45,7 @@ public class CreditsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                homeButton.startAnimation(viewJiggle);
                 goToHomeScreen();
             }
         });
@@ -51,5 +55,12 @@ public class CreditsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

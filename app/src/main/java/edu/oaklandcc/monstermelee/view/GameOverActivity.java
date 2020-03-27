@@ -21,12 +21,15 @@ public class GameOverActivity extends AppCompatActivity {
     TextView youDiedTextView;
     TextView gameOverTextView;
     Button homeButton;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         Intent intent = getIntent();
         currentMatch = intent.getParcelableExtra("Match");
@@ -50,6 +53,7 @@ public class GameOverActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                homeButton.startAnimation(viewJiggle);
                 goToHomeScreen();
             }
         });
@@ -59,5 +63,12 @@ public class GameOverActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

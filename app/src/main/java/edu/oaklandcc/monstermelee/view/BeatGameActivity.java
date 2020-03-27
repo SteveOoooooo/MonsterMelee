@@ -23,12 +23,15 @@ public class BeatGameActivity extends AppCompatActivity {
     TextView youAreAwesomeTextView;
     Button homeButton;
     ImageView userImageView;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beat_game);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         beatAllMonstersTextView = findViewById(R.id.textView_beatGame_beatAllMonsters);
         youAreAwesomeTextView = findViewById(R.id.textView_beatGame_awesome);
@@ -42,7 +45,7 @@ public class BeatGameActivity extends AppCompatActivity {
                 currentMatch.getUserCharacter().getCharImage(), getTheme()));
 
         Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
-        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+        final Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
 
         youAreAwesomeTextView.startAnimation(viewAlphaIncrease);
         homeButton.startAnimation(viewAlphaIncrease);
@@ -52,6 +55,7 @@ public class BeatGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                homeButton.startAnimation(viewJiggle);
                 goToHomeScreen();
             }
         });
@@ -61,5 +65,12 @@ public class BeatGameActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

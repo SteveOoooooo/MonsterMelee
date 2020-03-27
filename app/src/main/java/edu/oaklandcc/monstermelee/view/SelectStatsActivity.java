@@ -55,6 +55,8 @@ public class SelectStatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_stats);
         UI.immersiveLandscape(this);
 
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
+
         viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
         viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
@@ -98,6 +100,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 healthButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                healthButtonAdd.startAnimation(viewJiggle);
                 updateHealth(true);
             }
         });
@@ -105,6 +108,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attackButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                attackButtonAdd.startAnimation(viewJiggle);
                 updateAttack(true);
             }
         });
@@ -112,6 +116,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 critButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                critButtonAdd.startAnimation(viewJiggle);
                 updateCrit(true);
             }
         });
@@ -120,6 +125,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intelligenceButtonAdd.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                intelligenceButtonAdd.startAnimation(viewJiggle);
                 updateIntelligence(true);
             }
         });
@@ -128,6 +134,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                backButton.startAnimation(viewJiggle);
                 goBackToCharacterSelect();
             }
         });
@@ -136,6 +143,7 @@ public class SelectStatsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                fightButton.startAnimation(viewJiggle);
                 goToEnemyIntro();
             }
         });
@@ -216,5 +224,12 @@ public class SelectStatsActivity extends AppCompatActivity {
         intent.putExtra("Match", match);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

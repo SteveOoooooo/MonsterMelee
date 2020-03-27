@@ -7,7 +7,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -43,6 +42,9 @@ public class FightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
+
         currentAtivity = this;
 
         attackButton = findViewById(R.id.button_fight_attack);
@@ -71,12 +73,14 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 exitButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                exitButton.startAnimation(viewJiggle);
                 goToGiveUpScreen();
             }
         });
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attackButton.startAnimation(viewJiggle);
                 attackButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 attackStep1();
             }
@@ -311,6 +315,13 @@ public class FightActivity extends AppCompatActivity {
         });
         animatorSet.play(playerAnimation);
         animatorSet.start();
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 
 }

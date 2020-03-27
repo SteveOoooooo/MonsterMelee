@@ -22,12 +22,15 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
     TextView enemyNameTextView;
     TextView prepareToBattleTextView;
     Button fightButton;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enemy_introduction);
         UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         enemyImageView = findViewById(R.id.imageView_enemyIntro_enemyImage);
         enemyNameTextView = findViewById(R.id.textView_enemyIntro_enemyName);
@@ -52,6 +55,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fightButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                fightButton.startAnimation(viewJiggle);
                 startFight();
             }
         });
@@ -62,5 +66,12 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
         intent.putExtra("Match", match);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }
