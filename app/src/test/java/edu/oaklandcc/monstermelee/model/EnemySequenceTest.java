@@ -62,12 +62,10 @@ public class EnemySequenceTest extends TestCase {
         int expectedIndex = 0;
         EnemySequence testSequence = new EnemySequence();
 
-
         //EXECUTE
         outputIndex = testSequence.getCurrentEnemyIndex();
 
         //ASSERT
         assertEquals(expectedIndex, outputIndex);
-
     }
 }
