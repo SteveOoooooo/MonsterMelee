@@ -146,7 +146,6 @@ public class UserCharacterTest extends TestCase {
         //SETUP
         int startMaxHealth = 100;
         boolean actualOutput;
-        boolean expectedOutput = true;
 
         UserCharacter testCharacter = new UserCharacter("Dummy", startMaxHealth,
                 100, 100, 1, 2, 3, 4, 100);
@@ -156,7 +155,7 @@ public class UserCharacterTest extends TestCase {
         actualOutput = testCharacter.isDead();
 
         //ASSERT
-        assertEquals(expectedOutput, actualOutput);
+        assertTrue(actualOutput);
     }
 
     public void testGetCharImage() {
@@ -176,7 +175,7 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetAttackPoints() {
-
+        //SETUP
         int startAttack = 100;
         int actualOutput;
         int expectedOutput = startAttack;
@@ -192,6 +191,7 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetCriticalHitPoints() {
+        //SETUP
         int startCrit = 100;
         int actualOutput;
         int expectedOutput = startCrit;
@@ -207,6 +207,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetCharHurtImage() {
+
+        //SETUP
         int charHurtImage = 100;
         int actualOutput;
         int expectedOutput = charHurtImage;
@@ -222,6 +224,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetCharDeadImage() {
+
+        //SETUP
         int charDeadImage = 100;
         int actualOutput;
         int expectedOutput = charDeadImage;
@@ -237,6 +241,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testGetCharAttackImage() {
+
+        //SETUP
         int charAttackImage = 100;
         int actualOutput;
         int expectedOutput = charAttackImage;
@@ -269,6 +275,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetMaxHealthPoints() {
+
+        //SETUP
         int testMaxHealth = 100;
         int actualOutput;
         int expectedOutput = testMaxHealth;
@@ -285,6 +293,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetCurrentHealthPoints() {
+
+        //SETUP
         int startMaxHealth = 100;
         int testHealth = 10;
         int actualOutput;
@@ -302,6 +312,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetAttackPoints() {
+
+        //SETUP
         int startAttackPoints = 100;
         int testAttackPoints = 10;
         int actualOutput;
@@ -319,6 +331,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetCriticalHitPoints() {
+
+        //SETUP
         int startCritPoints = 100;
         int testCritPoints = 10;
         int actualOutput;
@@ -354,6 +368,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetCharHurtImage() {
+
+        //SETUP
         int charHurtImage = 123;
         int testCharHurtImage = 456;
         int actualOutput;
@@ -371,6 +387,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetCharDeadImage() {
+
+        //SETUP
         int charDeadImage = 123;
         int testCharDeadImage = 456;
         int actualOutput;
@@ -388,6 +406,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testSetCharAttackImage() {
+
+        //SETUP
         int charAttackImage = 123;
         int testCharAttackImage = 456;
         int actualOutput;
@@ -405,6 +425,8 @@ public class UserCharacterTest extends TestCase {
     }
 
     public void testAwardXP() throws NoSuchFieldException, IllegalAccessException {
+
+        //SETUP
         int xpReward = 100;
         int startIntelligence = 100;
         int actualOutput;
