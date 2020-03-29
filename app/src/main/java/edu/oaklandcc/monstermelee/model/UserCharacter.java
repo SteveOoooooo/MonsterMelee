@@ -138,7 +138,7 @@ public class UserCharacter extends BaseCharacter implements Parcelable {
 
     private void levelCheck() {
         int startLevel = this.level;
-        this.level = experiencePoints / XP_PER_LEVEL;
+        this.level = (experiencePoints + XP_PER_LEVEL) / XP_PER_LEVEL;  // Adding XP_PER_LEVEL in numerator because character starts at level 1 with no XP points.
 
         availableStatPoints += (this.level - startLevel) * STAT_POINTS_PER_LEVEL;
     }
