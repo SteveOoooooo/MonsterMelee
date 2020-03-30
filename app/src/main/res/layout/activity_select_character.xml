@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button_selectChar_character2"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@+id/button_selectChar_character0"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_selectChar_title" />
 
     <ImageButton
         android:id="@+id/button_selectChar_character2"
@@ -117,7 +117,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_selectChar_character1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_selectChar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

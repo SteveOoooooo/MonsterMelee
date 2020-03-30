@@ -1,42 +1,35 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import edu.oaklandcc.monstermelee.utility.UI;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
 
 public class GameOverActivity extends AppCompatActivity {
-
-    long animationDuration = 1500;
 
     Match currentMatch;
     ImageView userImage;
     TextView youDiedTextView;
     TextView gameOverTextView;
     Button homeButton;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+        UI.immersiveLandscape(this);
 
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         Intent intent = getIntent();
         currentMatch = intent.getParcelableExtra("Match");
@@ -49,27 +42,18 @@ public class GameOverActivity extends AppCompatActivity {
         userImage.setBackground(getResources().getDrawable(
                 currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
 
-        gameOverTextView.setAlpha(0);
-        homeButton.setAlpha(0);
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
 
-        final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(youDiedTextView, View.TRANSLATION_Y,  -1000, 0);
-        playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
-
-        final ObjectAnimator gameOverAnimation = ObjectAnimator.ofFloat(gameOverTextView, View.ALPHA, 0f, 1f);
-        gameOverAnimation.setDuration(animationDuration);
-
-        final ObjectAnimator homeButtonAnimation = ObjectAnimator.ofFloat(homeButton, View.ALPHA, 0f, 1f);
-        homeButtonAnimation.setDuration(animationDuration);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(playerAnimation).before(gameOverAnimation);
-        animatorSet.play(gameOverAnimation).with(homeButtonAnimation);
-        animatorSet.start();
+        youDiedTextView.startAnimation(viewBounce);
+        gameOverTextView.startAnimation(viewAlphaIncrease);
+        homeButton.startAnimation(viewAlphaIncrease);
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                homeButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                homeButton.startAnimation(viewJiggle);
                 goToHomeScreen();
             }
         });
@@ -78,5 +62,13 @@ public class GameOverActivity extends AppCompatActivity {
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

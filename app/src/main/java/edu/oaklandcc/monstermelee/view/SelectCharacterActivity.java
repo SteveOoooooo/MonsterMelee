@@ -1,19 +1,20 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import edu.oaklandcc.monstermelee.utility.UI;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.EnemySequence;
 import edu.oaklandcc.monstermelee.model.Match;
@@ -44,35 +45,35 @@ public class SelectCharacterActivity extends AppCompatActivity {
     ProgressBar critBar2;
     ProgressBar intelligenceBar2;
 
+    TextView titleText;
     Button backButton;
+
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_select_character);
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         characterList = new ArrayList<>();
-
-        characterList.add(new UserCharacter("Black", 500,
+        characterList.add(new UserCharacter("Lava", 500,
                 500, 100,
                 R.drawable.blackleft, R.drawable.blackhurtleft, R.drawable.blackattackleft,
                 R.drawable.blackdeadleft, 100));
-        characterList.add(new UserCharacter("Blue", 300,
+        characterList.add(new UserCharacter("Ice", 300,
                 300, 200,
                 R.drawable.blueleft, R.drawable.bluehurtleft, R.drawable.blueattackleft,
                 R.drawable.bluedeadleft, 200));
-        characterList.add(new UserCharacter("Green", 200,
+        characterList.add(new UserCharacter("Earth", 200,
                 200, 500,
                 R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
                 R.drawable.greendeadleft, 300));
+
+        titleText = findViewById(R.id.textView_selectChar_title);
 
         textView0 = findViewById(R.id.textView_selectChar_char0);
         textView0.setText(characterList.get(0).getName());
@@ -119,6 +120,8 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(0));
+                button0.startAnimation(viewJiggle);
+                button0.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 
@@ -126,6 +129,8 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(1));
+                button1.startAnimation(viewJiggle);
+                button1.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 
@@ -133,20 +138,38 @@ public class SelectCharacterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 characterSelected(characterList.get(2));
+                button2.startAnimation(viewJiggle);
+                button2.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             }
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                backButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                backButton.startAnimation(viewJiggle);
                 goBackToStart();
             }
         });
+
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        button0.startAnimation(viewBounce);
+        button1.startAnimation(viewBounce);
+        button2.startAnimation(viewBounce);
+        titleText.startAnimation(viewBounce);
+
+        backButton.startAnimation(viewAlphaIncrease);
+        textView0.startAnimation(viewAlphaIncrease);
+        textView1.startAnimation(viewAlphaIncrease);
+        textView2.startAnimation(viewAlphaIncrease);
     }
 
     private void goBackToStart() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
     private void characterSelected(UserCharacter selectedCharacter) {
@@ -156,5 +179,13 @@ public class SelectCharacterActivity extends AppCompatActivity {
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

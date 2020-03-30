@@ -1,26 +1,29 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
+import edu.oaklandcc.monstermelee.utility.UI;
 
 public class FightActivity extends AppCompatActivity {
-    private static final int animationDuration = 1000;
-    private static final int animationDistance = 325;
+    private static final int ANIMATION_DURATION = 1000;
+    float animationDistance;
 
     Match currentMatch;
 
@@ -28,21 +31,21 @@ public class FightActivity extends AppCompatActivity {
     ImageButton exitButton;
     ImageView userImageView;
     ImageView enemyImageView;
-    ProgressBar playerProgressBar;
+    ProgressBar userProgressBar;
     ProgressBar enemyProgressBar;
+
+    Animation viewJiggle;
+    Activity currentAtivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight);
+        UI.immersiveLandscape(this);
 
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
+
+        currentAtivity = this;
 
         attackButton = findViewById(R.id.button_fight_attack);
         exitButton = findViewById(R.id.imageButton_fight_exit);
@@ -50,7 +53,7 @@ public class FightActivity extends AppCompatActivity {
         userImageView = findViewById(R.id.imageView_fight_userCharacter);
         enemyImageView = findViewById(R.id.imageView_fight_enemyCharacter);
 
-        playerProgressBar = findViewById(R.id.progressBar_fight_userHealth);
+        userProgressBar = findViewById(R.id.progressBar_fight_userHealth);
         enemyProgressBar = findViewById(R.id.progressBar_fight_enemyHealth);
 
         Intent intent = getIntent();
@@ -69,27 +72,42 @@ public class FightActivity extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                exitButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                exitButton.startAnimation(viewJiggle);
                 goToGiveUpScreen();
             }
         });
-
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attackButton.startAnimation(viewJiggle);
+                attackButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 attackStep1();
             }
         });
+
+        Animation viewBounce = AnimationUtils.loadAnimation(this, R.anim.view_bounce);
+        Animation viewAlphaIncrease = AnimationUtils.loadAnimation(this, R.anim.view_alpha_increase);
+
+        enemyImageView.startAnimation(viewBounce);
+        userImageView.startAnimation(viewBounce);
+
+        attackButton.startAnimation(viewAlphaIncrease);
+        exitButton.startAnimation(viewAlphaIncrease);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
     }
 
     private void goToGiveUpScreen() {
         Intent intent = new Intent(this, GiveUpActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
     private void updateHealthProgressBar() {
         enemyProgressBar.setProgress(100 * currentMatch.getEnemyCharacter().getCurrentHealthPoints()
                 / currentMatch.getEnemyCharacter().getMaxHealthPoints());
-        playerProgressBar.setProgress(100 * currentMatch.getUserCharacter().getCurrentHealthPoints()
+        userProgressBar.setProgress(100 * currentMatch.getUserCharacter().getCurrentHealthPoints()
                 / currentMatch.getUserCharacter().getMaxHealthPoints());
     }
 
@@ -113,14 +131,15 @@ public class FightActivity extends AppCompatActivity {
 
         float playerStartX = userImageView.getX();
         float enemyStartX = enemyImageView.getX();
+        animationDistance = (enemyStartX - playerStartX) / 3;
 
         final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -128,9 +147,12 @@ public class FightActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                // add sound
 
                 currentMatch.userAttack();
                 updateHealthProgressBar();
+                enemyProgressBar.startAnimation(viewJiggle);
+                UI.vibrate(currentAtivity);
 
                 if (currentMatch.enemyIsDead())
                     enemyDead();
@@ -153,11 +175,11 @@ public class FightActivity extends AppCompatActivity {
 
         ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -166,6 +188,7 @@ public class FightActivity extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 attackStep3();
+                // add sound
             }
         });
 
@@ -183,11 +206,11 @@ public class FightActivity extends AppCompatActivity {
 
         final ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX + animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         final ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX - animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -197,6 +220,8 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 currentMatch.enemyAttack();
                 updateHealthProgressBar();
+                userProgressBar.startAnimation(viewJiggle);
+                UI.vibrate(currentAtivity);
                 if (currentMatch.userIsDead())
                     userDead();
                 else
@@ -206,6 +231,7 @@ public class FightActivity extends AppCompatActivity {
 
         animatorSet.play(playerAnimation).with(enemyAnimation);
         animatorSet.start();
+        //add sound
     }
 
     private void attackStep4() {
@@ -217,11 +243,11 @@ public class FightActivity extends AppCompatActivity {
 
         ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
 
         ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(playerAnimation).with(enemyAnimation);
@@ -234,11 +260,13 @@ public class FightActivity extends AppCompatActivity {
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 attackButton.setEnabled(true);
+                //add sound
             }
         });
     }
 
     private void userDead() {
+        userProgressBar.startAnimation(viewJiggle);
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharDeadImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharAttackImage(), getTheme()));
 
@@ -246,7 +274,7 @@ public class FightActivity extends AppCompatActivity {
 
         ObjectAnimator enemyAnimation = ObjectAnimator.ofFloat(enemyImageView, View.X, enemyStartX, enemyStartX + animationDistance);
         enemyAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        enemyAnimation.setDuration(animationDuration);
+        enemyAnimation.setDuration(ANIMATION_DURATION);
 
         AnimatorSet animatorSet = new AnimatorSet();
 
@@ -256,6 +284,8 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharImage(), getTheme()));
                 goToLoseScreen();
+
+                //add sound
             }
         });
         animatorSet.play(enemyAnimation);
@@ -263,12 +293,13 @@ public class FightActivity extends AppCompatActivity {
     }
 
     private void enemyDead() {
+        enemyProgressBar.startAnimation(viewJiggle);
         userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharAttackImage(), getTheme()));
         enemyImageView.setBackground(getResources().getDrawable(currentMatch.getEnemyCharacter().getCharDeadImage(), getTheme()));
 
         float playerStartX = userImageView.getX();
         ObjectAnimator playerAnimation = ObjectAnimator.ofFloat(userImageView, View.X, playerStartX, playerStartX - animationDistance);
-        playerAnimation.setDuration(animationDuration);
+        playerAnimation.setDuration(ANIMATION_DURATION);
         playerAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -279,10 +310,18 @@ public class FightActivity extends AppCompatActivity {
                 super.onAnimationEnd(animation);
                 userImageView.setBackground(getResources().getDrawable(currentMatch.getUserCharacter().getCharImage(), getTheme()));
                 goToWinScreen();
+                //add sound
             }
         });
         animatorSet.play(playerAnimation);
         animatorSet.start();
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 
 }

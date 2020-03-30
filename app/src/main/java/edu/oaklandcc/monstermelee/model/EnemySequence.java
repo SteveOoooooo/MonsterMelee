@@ -64,6 +64,10 @@ public class EnemySequence implements Parcelable {
         return nextEnemy;
     }
 
+    public int getCurrentEnemyIndex(){
+        return currentEnemyIndex;
+    }
+
     @Override
     public int describeContents() {
         return 0;

@@ -1,30 +1,30 @@
 package edu.oaklandcc.monstermelee.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import edu.oaklandcc.monstermelee.utility.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-
 import edu.oaklandcc.monstermelee.R;
 
 public class GiveUpActivity extends AppCompatActivity {
 
     Button yesButton;
     Button noButton;
+    Animation viewJiggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_up);
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        UI.immersiveLandscape(this);
+
+        viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         yesButton = findViewById(R.id.button_giveUp_yes);
         noButton = findViewById(R.id.button_giveUp_no);
@@ -32,6 +32,8 @@ public class GiveUpActivity extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yesButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                yesButton.startAnimation(viewJiggle);
                 goToHomeScreen();
             }
         });
@@ -39,6 +41,8 @@ public class GiveUpActivity extends AppCompatActivity {
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                noButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                noButton.startAnimation(viewJiggle);
                 goBackToFight();
             }
         });
@@ -46,10 +50,19 @@ public class GiveUpActivity extends AppCompatActivity {
 
     private void goBackToFight() {
         this.finish();
+        overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
     private void goToHomeScreen() {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UI.immersiveLandscape(this);
+        }
     }
 }

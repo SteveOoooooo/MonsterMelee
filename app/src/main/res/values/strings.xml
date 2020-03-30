@@ -20,4 +20,9 @@
     <string name="Continue">Continue</string>
     <string name="BeatAllMonsters">Congratulations!\nYou have beat all monsters!</string>
     <string name="Awesome">You are awesome!</string>
+    <string name="Credits">Credits</string>
+    <string name="MonsterMeleeTeam">Monster Melee Team:</string>
+    <string name="TeamMembers">Pioline Choudhury\nChristina Landstrom\nMaggie Lei\nSteve Oosting\nJames Tyner</string>
+    <string name="GameArt">Game Art:</string>
+    <string name="AssetsCredit">Game images were borrowed from the following websites (with permission):\n\nwww.craftpix.net\nwww.flaticon.com</string>
 </resources>
