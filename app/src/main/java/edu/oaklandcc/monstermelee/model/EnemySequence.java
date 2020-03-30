@@ -34,9 +34,17 @@ public class EnemySequence implements Parcelable {
                 R.drawable.reaperhurtright, R.drawable.reaperattackright,
                 R.drawable.reaperdeadright, 200));
         enemies.add(new EnemyCharacter("Ogre", 3000,
-                100, 50, R.drawable.ogreright,
+                110, 50, R.drawable.ogreright,
                 R.drawable.ogrehurtright, R.drawable.ogreattackright,
-                R.drawable.ogredeadright, 100));
+                R.drawable.ogredeadright, 250));
+        enemies.add(new EnemyCharacter("Witch", 4000,
+                120, 50, R.drawable.witch1,
+                R.drawable.witch1, R.drawable.witch1,
+                R.drawable.witch1, 300));
+        enemies.add(new EnemyCharacter("Dragon", 5000,
+                130, 50, R.drawable.ogreright,
+                R.drawable.ogrehurtright, R.drawable.ogreattackright,
+                R.drawable.ogredeadright, 350));
     }
 
     protected EnemySequence(Parcel in) {
