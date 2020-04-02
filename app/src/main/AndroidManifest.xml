@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.oaklandcc.monstermelee">
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
@@ -11,36 +10,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:screenOrientation="landscape">
+        android:screenOrientation="sensorLandscape">
         <activity android:name=".viewControl.CreditsActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.BeatGameActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.GameOverActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.GiveUpActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.FightActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.EnemyIntroductionActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.SelectStatsActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.WonMatchActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.SelectCharacterActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.StartActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

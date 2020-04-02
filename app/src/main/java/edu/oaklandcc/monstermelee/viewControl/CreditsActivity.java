@@ -23,7 +23,7 @@ public class CreditsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UI.immersiveLandscape(this);
+        UI.immersiveUI(this);
         setContentView(R.layout.activity_credits);
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
@@ -59,7 +59,7 @@ public class CreditsActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            UI.immersiveLandscape(this);
+            UI.immersiveUI(this);
         }
     }
 }

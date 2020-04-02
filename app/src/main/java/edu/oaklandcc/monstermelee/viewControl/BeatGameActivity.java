@@ -2,6 +2,7 @@ package edu.oaklandcc.monstermelee.viewControl;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import edu.oaklandcc.monstermelee.R;
 import edu.oaklandcc.monstermelee.model.Match;
@@ -28,7 +29,7 @@ public class BeatGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UI.immersiveLandscape(this);
+        UI.immersiveUI(this);
         setContentView(R.layout.activity_beat_game);
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
@@ -59,6 +60,9 @@ public class BeatGameActivity extends AppCompatActivity {
                 goToHomeScreen();
             }
         });
+
+        MediaPlayer win = MediaPlayer.create(this, R.raw.win);
+        win.start();
     }
 
     private void goToHomeScreen() {
@@ -71,7 +75,7 @@ public class BeatGameActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            UI.immersiveLandscape(this);
+            UI.immersiveUI(this);
         }
     }
 }

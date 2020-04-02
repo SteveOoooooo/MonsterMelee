@@ -12,7 +12,7 @@ import android.view.View;
 public class UI {
 
     @SuppressLint("SourceLockedOrientationActivity")
-    public static void immersiveLandscape(Activity activity) {
+    public static void immersiveUI(Activity activity) {
         View decorView = activity.getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE
@@ -21,7 +21,6 @@ public class UI {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     public static void vibrate(Activity activity) {
