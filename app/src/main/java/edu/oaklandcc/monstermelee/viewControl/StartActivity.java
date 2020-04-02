@@ -73,6 +73,7 @@ public class StartActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
     }
 
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {

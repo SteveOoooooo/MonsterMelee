@@ -59,6 +59,7 @@ public class GiveUpActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
     }
 
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {

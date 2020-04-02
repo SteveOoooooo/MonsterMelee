@@ -12,14 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="landscape">
-        <activity android:name=".viewControl.CreditsActivity"  />
-        <activity android:name=".viewControl.BeatGameActivity" />
-        <activity android:name=".viewControl.GameOverActivity" />
-        <activity android:name=".viewControl.GiveUpActivity" />
-        <activity android:name=".viewControl.FightActivity" />
-        <activity android:name=".viewControl.EnemyIntroductionActivity" />
-        <activity android:name=".viewControl.SelectStatsActivity" />
-        <activity android:name=".viewControl.WonMatchActivity" />
+        <activity android:name=".viewControl.CreditsActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.BeatGameActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.GameOverActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.GiveUpActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.FightActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.EnemyIntroductionActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.SelectStatsActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.WonMatchActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
         <activity android:name=".viewControl.SelectCharacterActivity"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity"/>
@@ -28,10 +44,8 @@
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
