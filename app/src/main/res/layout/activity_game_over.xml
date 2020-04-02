@@ -7,7 +7,7 @@
     android:background="@drawable/bg_tree"
     android:backgroundTint="#810000"
     android:backgroundTintMode="add"
-    tools:context=".view.GameOverActivity">
+    tools:context=".viewControl.GameOverActivity">
 
     <TextView
         android:id="@+id/textView_gameOver_YouDied"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_tree"
-    tools:context=".view.EnemyIntroductionActivity">
+    tools:context=".viewControl.EnemyIntroductionActivity">
 
     <ImageView
         android:id="@+id/imageView_enemyIntro_enemyImage"

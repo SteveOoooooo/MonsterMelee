@@ -1,9 +1,8 @@
-package edu.oaklandcc.monstermelee.view;
+package edu.oaklandcc.monstermelee.viewControl;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -26,9 +25,9 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-        setContentView(R.layout.activity_start);
         UI.immersiveLandscape(this);
+        setContentView(R.layout.activity_start);
+
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 

@@ -1,4 +1,4 @@
-package edu.oaklandcc.monstermelee.view;
+package edu.oaklandcc.monstermelee.viewControl;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -28,8 +28,8 @@ public class BeatGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beat_game);
         UI.immersiveLandscape(this);
+        setContentView(R.layout.activity_beat_game);
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 

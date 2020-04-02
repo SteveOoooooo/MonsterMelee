@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_sky"
-    tools:context=".view.CreditsActivity">
+    tools:context=".viewControl.CreditsActivity">
 
     <TextView
         android:id="@+id/textView_credits_title"

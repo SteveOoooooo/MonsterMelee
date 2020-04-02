@@ -1,4 +1,4 @@
-package edu.oaklandcc.monstermelee.view;
+package edu.oaklandcc.monstermelee.viewControl;
 
 import androidx.appcompat.app.AppCompatActivity;
 import edu.oaklandcc.monstermelee.utility.UI;
@@ -26,8 +26,9 @@ public class GameOverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_over);
         UI.immersiveLandscape(this);
+        setContentView(R.layout.activity_game_over);
+
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 

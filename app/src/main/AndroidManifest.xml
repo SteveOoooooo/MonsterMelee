@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="edu.oaklandcc.monstermelee">
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -9,17 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.CreditsActivity"></activity>
-        <activity android:name=".view.BeatGameActivity" />
-        <activity android:name=".view.GameOverActivity" />
-        <activity android:name=".view.GiveUpActivity" />
-        <activity android:name=".view.FightActivity" />
-        <activity android:name=".view.EnemyIntroductionActivity" />
-        <activity android:name=".view.SelectStatsActivity" />
-        <activity android:name=".view.WonMatchActivity" />
-        <activity android:name=".view.SelectCharacterActivity" />
-        <activity android:name=".view.StartActivity">
+        android:theme="@style/AppTheme"
+        android:screenOrientation="landscape">
+        <activity android:name=".viewControl.CreditsActivity"  />
+        <activity android:name=".viewControl.BeatGameActivity" />
+        <activity android:name=".viewControl.GameOverActivity" />
+        <activity android:name=".viewControl.GiveUpActivity" />
+        <activity android:name=".viewControl.FightActivity" />
+        <activity android:name=".viewControl.EnemyIntroductionActivity" />
+        <activity android:name=".viewControl.SelectStatsActivity" />
+        <activity android:name=".viewControl.WonMatchActivity" />
+        <activity android:name=".viewControl.SelectCharacterActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".viewControl.StartActivity"
+            android:screenOrientation="landscape"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,7 +7,7 @@
     android:background="@drawable/bg_tree"
     android:backgroundTint="@color/colorPrimaryDark"
     android:backgroundTintMode="add"
-    tools:context=".view.GameOverActivity">
+    tools:context=".viewControl.GameOverActivity">
 
     <ImageView
         android:id="@+id/imageView_wonMatch_userImage"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_sky"
-    tools:context=".view.SelectStatsActivity">
+    tools:context=".viewControl.SelectStatsActivity">
 
     <Button
         android:id="@+id/button_selectStats_critAdd"

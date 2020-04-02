@@ -1,4 +1,4 @@
-package edu.oaklandcc.monstermelee.view;
+package edu.oaklandcc.monstermelee.viewControl;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +26,9 @@ public class WonMatchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_won_match);
         UI.immersiveLandscape(this);
+        setContentView(R.layout.activity_won_match);
+
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
