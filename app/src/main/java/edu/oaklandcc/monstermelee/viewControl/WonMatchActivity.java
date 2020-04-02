@@ -1,6 +1,7 @@
 package edu.oaklandcc.monstermelee.viewControl;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -28,7 +29,6 @@ public class WonMatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         UI.immersiveLandscape(this);
         setContentView(R.layout.activity_won_match);
-
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
@@ -63,6 +63,10 @@ public class WonMatchActivity extends AppCompatActivity {
                     goToSelectStatsScreen();
             }
         });
+
+
+        MediaPlayer win = MediaPlayer.create(this, R.raw.win);
+        win.start();
     }
 
     private void goToBeatGameScreen() {

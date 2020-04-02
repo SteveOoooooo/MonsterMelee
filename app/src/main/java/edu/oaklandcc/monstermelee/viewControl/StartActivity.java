@@ -28,7 +28,6 @@ public class StartActivity extends AppCompatActivity {
         UI.immersiveLandscape(this);
         setContentView(R.layout.activity_start);
 
-
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         startButton = findViewById(R.id.button_start_start);

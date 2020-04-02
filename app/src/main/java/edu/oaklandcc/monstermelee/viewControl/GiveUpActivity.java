@@ -24,7 +24,6 @@ public class GiveUpActivity extends AppCompatActivity {
         UI.immersiveLandscape(this);
         setContentView(R.layout.activity_give_up);
 
-
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         yesButton = findViewById(R.id.button_giveUp_yes);

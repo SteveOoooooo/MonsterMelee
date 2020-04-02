@@ -29,7 +29,6 @@ public class GameOverActivity extends AppCompatActivity {
         UI.immersiveLandscape(this);
         setContentView(R.layout.activity_game_over);
 
-
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
         Intent intent = getIntent();
