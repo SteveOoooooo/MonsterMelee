@@ -23,6 +23,7 @@ public class WonMatchActivity extends AppCompatActivity {
     TextView youWonTextView;
     Button continueButton;
     Animation viewJiggle;
+    MediaPlayer winSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +66,8 @@ public class WonMatchActivity extends AppCompatActivity {
         });
 
 
-        MediaPlayer win = MediaPlayer.create(this, R.raw.win);
-        win.start();
+        winSound = MediaPlayer.create(this, R.raw.win);
+        winSound.start();
     }
 
     private void goToBeatGameScreen() {
@@ -89,5 +90,12 @@ public class WonMatchActivity extends AppCompatActivity {
         if (hasFocus) {
             UI.immersiveUI(this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        winSound.release();
+        winSound = null;
     }
 }

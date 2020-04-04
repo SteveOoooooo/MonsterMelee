@@ -25,6 +25,7 @@ public class BeatGameActivity extends AppCompatActivity {
     Button homeButton;
     ImageView userImageView;
     Animation viewJiggle;
+    MediaPlayer winSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,8 @@ public class BeatGameActivity extends AppCompatActivity {
             }
         });
 
-        MediaPlayer win = MediaPlayer.create(this, R.raw.win);
-        win.start();
+        winSound = MediaPlayer.create(this, R.raw.win);
+        winSound.start();
     }
 
     private void goToHomeScreen() {
@@ -77,5 +78,12 @@ public class BeatGameActivity extends AppCompatActivity {
         if (hasFocus) {
             UI.immersiveUI(this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        winSound.release();
+        winSound = null;
     }
 }
