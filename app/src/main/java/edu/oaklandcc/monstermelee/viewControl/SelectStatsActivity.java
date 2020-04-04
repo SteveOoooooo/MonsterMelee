@@ -215,6 +215,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
+        this.finish();
     }
 
     private void goToEnemyIntro(){
@@ -222,6 +223,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         intent.putExtra("Match", match);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     @Override

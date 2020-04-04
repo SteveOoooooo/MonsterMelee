@@ -53,6 +53,7 @@ public class CreditsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     @Override

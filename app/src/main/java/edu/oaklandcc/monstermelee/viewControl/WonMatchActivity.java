@@ -82,6 +82,7 @@ public class WonMatchActivity extends AppCompatActivity {
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     @Override

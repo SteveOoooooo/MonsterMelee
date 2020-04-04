@@ -168,16 +168,17 @@ public class SelectCharacterActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
+        this.finish();
     }
 
     private void characterSelected(UserCharacter selectedCharacter) {
-        EnemySequence enemySequence = new EnemySequence();
-        Match match = new Match(selectedCharacter, enemySequence);
+        Match match = new Match(selectedCharacter, new EnemySequence());
 
         Intent selectStatsIntent = new Intent(this, SelectStatsActivity.class);
         selectStatsIntent.putExtra("Match", match);
         startActivity(selectStatsIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     @Override

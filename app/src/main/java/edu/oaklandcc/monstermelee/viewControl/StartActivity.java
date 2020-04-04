@@ -64,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     private void showCredits() {
@@ -71,6 +72,7 @@ public class StartActivity extends AppCompatActivity {
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
+        this.finish();
     }
 
     @Override

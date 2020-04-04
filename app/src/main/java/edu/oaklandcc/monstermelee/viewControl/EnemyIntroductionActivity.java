@@ -66,6 +66,7 @@ public class EnemyIntroductionActivity extends AppCompatActivity {
         intent.putExtra("Match", match);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
+        this.finish();
     }
 
     @Override
