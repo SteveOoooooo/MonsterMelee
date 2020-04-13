@@ -3,6 +3,7 @@ package edu.oaklandcc.monstermelee.viewControl;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -27,6 +28,13 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         UI.immersiveUI(this);
         setContentView(R.layout.activity_start);
+
+
+        MediaPlayer  player = MediaPlayer.create(this,  R.raw.meleetheme);
+        player.setLooping(true); // Set looping
+        player.setVolume(100,100);
+         player.start();
+
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
