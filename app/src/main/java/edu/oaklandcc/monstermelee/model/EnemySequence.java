@@ -25,7 +25,6 @@ public class EnemySequence implements Parcelable {
     private int currentEnemyIndex;
 
     public EnemySequence() {
-        this.enemies = enemies;
         currentEnemyIndex = 0;
         enemies = new ArrayList<>();
 
@@ -68,7 +67,7 @@ public class EnemySequence implements Parcelable {
         return nextEnemy;
     }
 
-    public int getCurrentEnemyIndex(){
+    int getCurrentEnemyIndex(){
         return currentEnemyIndex;
     }
 
