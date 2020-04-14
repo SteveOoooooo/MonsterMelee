@@ -91,7 +91,7 @@ public class SelectStatsActivity extends AppCompatActivity {
         updateAttack(false);
         updateIntelligence(false);
         updateCrit(false);
-        updateButtonEnabled();
+        if (userCharacter.getAvailableStatPoints() > 0) fightButton.setEnabled(false);
         updateStatPoints();
 
         healthButtonAdd.setOnClickListener(new View.OnClickListener() {
