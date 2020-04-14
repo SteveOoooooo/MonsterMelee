@@ -7,7 +7,7 @@ import android.util.Log;
 public class UserCharacter extends BaseCharacter implements Parcelable {
 
     public static final int INTELLIGENCE_POINTS_LIMIT = 1000;
-    public static final int EXPERIENCE_POINTS_LIMIT = 1000;
+    public static final int EXPERIENCE_POINTS_LIMIT = 1200;
     public static final int HEALTH_POINTS_LIMIT = 1000;
     public static final int ATTACK_POINTS_LIMIT = 1000;
     public static final int CRITICAL_ATTACK_POINTS_LIMIT = 1000;

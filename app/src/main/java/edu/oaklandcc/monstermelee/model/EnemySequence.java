@@ -45,9 +45,9 @@ public class EnemySequence implements Parcelable {
                 R.drawable.fireimphurt2, R.drawable.fireimpattack3,
                 R.drawable.fireimpdeath4, 500));
         enemies.add(new EnemyCharacter("Prof", 6000,
-                140, 300, R.drawable.prof,
-                R.drawable.profhurt, R.drawable.profattack,
-                R.drawable.profdead, 600));
+                140, 300, R.drawable.prof3,
+                R.drawable.profhurt, R.drawable.prof2,
+                R.drawable.prof1, 600));
     }
 
     protected EnemySequence(Parcel in) {
