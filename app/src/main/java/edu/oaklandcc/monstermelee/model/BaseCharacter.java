@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class BaseCharacter implements Parcelable {
 
-    private static double CRIT_CHANCE = 0.05;
+    private static double CRIT_CHANCE = 0.20;
 
     private String name;
     private int maxHealthPoints;
@@ -60,7 +60,7 @@ public class BaseCharacter implements Parcelable {
         int attackPointsTotal;
 
         if (Math.random() <= CRIT_CHANCE)
-            attackPointsTotal = attackPoints + criticalHitPoints;
+            attackPointsTotal = attackPoints * (1 + (criticalHitPoints/1000));
         else
             attackPointsTotal = attackPoints;
 

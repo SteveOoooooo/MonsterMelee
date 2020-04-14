@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
         MediaPlayer  player = MediaPlayer.create(this,  R.raw.meleetheme);
         player.setLooping(true); // Set looping
         player.setVolume(100,100);
-         player.start();
+        player.start();
 
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
