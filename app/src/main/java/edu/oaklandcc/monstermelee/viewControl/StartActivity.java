@@ -22,19 +22,11 @@ public class StartActivity extends AppCompatActivity {
     ImageView logoImage;
     Animation viewJiggle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UI.immersiveUI(this);
         setContentView(R.layout.activity_start);
-
-
-        MediaPlayer  player = MediaPlayer.create(this,  R.raw.meleetheme);
-        player.setLooping(true); // Set looping
-        player.setVolume(100,100);
-        player.start();
-
 
         viewJiggle = AnimationUtils.loadAnimation(this, R.anim.view_jiggle);
 
@@ -68,7 +60,6 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-
         Intent selectCharacterIntent = new Intent(this, SelectCharacterActivity.class);
         startActivity(selectCharacterIntent);
         overridePendingTransition(R.anim.slide_in_below, R.anim.slide_out_above);
@@ -76,7 +67,6 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void showCredits() {
-
         Intent creditsIntent = new Intent(this, CreditsActivity.class);
         startActivity(creditsIntent);
         overridePendingTransition(R.anim.slide_in_above, R.anim.slide_out_below);
