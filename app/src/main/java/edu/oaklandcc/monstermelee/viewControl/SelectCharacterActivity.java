@@ -63,13 +63,13 @@ public class SelectCharacterActivity extends AppCompatActivity {
                 R.drawable.blackleft, R.drawable.blackhurtleft, R.drawable.blackattackleft,
                 R.drawable.blackdeadleft, 100));
         characterList.add(new UserCharacter("Ice", 300,
-                300, 200,
+                400, 200,
                 R.drawable.blueleft, R.drawable.bluehurtleft, R.drawable.blueattackleft,
-                R.drawable.bluedeadleft, 200));
-        characterList.add(new UserCharacter("Earth", 200,
-                200, 500,
+                R.drawable.bluedeadleft, 300));
+        characterList.add(new UserCharacter("Earth", 600,
+                200, 300,
                 R.drawable.greenleft, R.drawable.greenhurtleft, R.drawable.greenattackleft,
-                R.drawable.greendeadleft, 300));
+                R.drawable.greendeadleft, 100));
 
         titleText = findViewById(R.id.textView_selectChar_title);
 

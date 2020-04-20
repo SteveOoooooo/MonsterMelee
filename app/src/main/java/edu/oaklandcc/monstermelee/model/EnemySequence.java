@@ -28,7 +28,7 @@ public class EnemySequence implements Parcelable {
         currentEnemyIndex = 0;
         enemies = new ArrayList<>();
 
-        enemies.add(new EnemyCharacter("Reaper", 2000,
+        enemies.add(new EnemyCharacter("Reaper", 1500,
                 100, 100, R.drawable.reaperright,
                 R.drawable.reaperhurtright, R.drawable.reaperattackright,
                 R.drawable.reaperdeadright, 200));
